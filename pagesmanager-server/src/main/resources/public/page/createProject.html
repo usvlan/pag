@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>配置中心</title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../common/common.css">
+    <style>
+        table em{color:red;}
+        table .tip{color:#ccc;}
+    </style>
+</head>
+<body>
+    <div class="markdown-section">
+        <h2>创建项目</h2>
+        <div style="margin:20px 0;"></div>
+        <div class="easyui-panel" title="新项目" style="width: 600px;">
+            <div style="padding:10px 60px 20px 60px">
+                <form id="frm" method="post">
+                    <table cellpadding="5" border="0">
+                        <tr>
+                            <td><em>*</em> 项目名称</td>
+                            <td><input class="easyui-textbox" type="text" name="name" data-options="required:true,width:300"></input></td>
+                        </tr>
+                        <tr>
+                            <td><em>*</em> 本地Git项目路径</td>
+                            <td>
+                                <input class="easyui-textbox" type="text" name="localGitPath" data-options="required:true,width:300" /><br>
+                                <span class="tip">Git上clone下来的目录，如：D:/project/myproject/</span>
+                            </td>
+                        </tr>
+                        <!--<tr>
+                            <td>Git命令</td>
+                            <td>
+                                <input class="easyui-textbox" type="text" name="gitCmd" data-options="width:300" /><br>
+                                <span class="tip">指定Git推送命令，可选</span>
+                            </td>
+                        </tr>-->
+                    </table>
+                </form>
+                <div style="padding:5px">
+                    <a id="btnSave" href="javascript:void(0)" data-options="iconCls:'icon-save'" class="easyui-linkbutton">保存</a>
+                    <a id="btnCancel" href="javascript:void(0)" class="easyui-linkbutton">返回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="../common/lab.js"></script>
+<script type="text/javascript">
+    importJs([
+        // page js
+        'js/createProject.js'
+    ], function () {
+        Main.init();
+    });
+</script>
+</body>
+</html>

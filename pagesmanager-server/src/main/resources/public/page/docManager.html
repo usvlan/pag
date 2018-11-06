@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>配置中心</title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../common/common.css">
+</head>
+<body id="mainLayout" class="easyui-layout">
+    <div data-options="region:'center', fit:true,border:false" style="padding: 10px;">
+        <div id="grid"></div>
+        <div id="tb">
+            <a href="#" class="easyui-menubutton" data-options="menu:'#mm2', iconCls:'icon-add'">添加页面</a>
+            <div id="mm2" style="width:100px;">
+                <div data-options="iconCls:'icon-page'">添加页面</div>
+                <div id="btnAddFolder" data-options="iconCls:'icon-folder'">添加目录</div>
+            </div>
+        </div>
+
+    </div>
+    <div data-options="region:'east',split:true,title:'项目信息',collapsible:false" style="width:350px;">
+        <table id="projectGrid"></table>
+    </div>
+
+    <div id="addFolderDlg" class="easyui-dialog" title="添加目录" style="width:400px;height:200px;padding: 20px;"
+         data-options="iconCls:'icon-save',resizable:true,closed:true,modal:true, buttons:'#addFolderDlgBtns'">
+        <form id="addFolderFrm" method="post">
+            <div>
+                <input class="easyui-textbox"
+                       type="text"
+                       name="name"
+                       data-options="required:true, label:'请输入目录名称',labelPosition:'top'" />
+            </div>
+        </form>
+        <div id="addFolderDlgBtns">
+            <a id="btnSaveFolder" href="#" class="easyui-linkbutton">保存</a>
+            <a href="#" class="easyui-linkbutton" onclick="$('#addFolderDlg').dialog('close')">关闭</a>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="../common/lab.js"></script>
+<script type="text/javascript">
+    importJs([
+        // page js
+        'js/docManager.js'
+    ], function () {
+        DocManager.init();
+    });
+</script>
+</body>
+</html>

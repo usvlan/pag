@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pages Manager</title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../common/common.css">
+</head>
+<body>
+<body id="mainLayout" class="easyui-layout">
+<div data-options="region:'north',border:false" style="height:30px;padding:5px;">
+    <div class="logo top-area">Pages Manager</div>
+    <div class="top-area" style="float: right;">
+        <!--<a href="#" onclick="ApiUtil.logout(); return false;">退出</a>-->
+    </div>
+</div>
+<div data-options="region:'west',split:true,title:'项目列表'" style="width:140px;padding:10px;">
+    <div id="projectList" class="west-area">
+    </div>
+    <a href="createProject.html" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-add'">添加项目</a>
+</div>
+<div data-options="region:'center'">
+    <div id="mainTab" class="easyui-tabs" data-options="fit:true,border:false">
+        <div title="首页" style="padding:10px">
+
+        </div>
+    </div>
+</div>
+
+<div id="tabsMenu" class="easyui-menu" style="width:120px;">
+    <div name="Refresh">刷新</div>
+    <div name="Other">关闭其他</div>
+    <div name="All">关闭所有</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../common/lab.js"></script>
+<script type="text/javascript">
+    importJs([
+        // page js
+        'js/main.js'
+    ], function () {
+        Main.init();
+    });
+</script>
+</body>
+</html>

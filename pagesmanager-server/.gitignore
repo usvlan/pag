@@ -17,14 +17,9 @@ target/
 
 ### NetBeans ###
 nbproject/private/
+build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-/.idea/
-/easyopen-parent.iml
-/.settings/
-/.project
-!/.idea/
-/.idea/libraries/
 /local-config/
