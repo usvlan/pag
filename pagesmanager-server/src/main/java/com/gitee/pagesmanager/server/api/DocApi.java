@@ -5,14 +5,17 @@ import com.gitee.easyopen.annotation.ApiService;
 import com.gitee.easyopen.doc.annotation.ApiDoc;
 import com.gitee.easyopen.doc.annotation.ApiDocMethod;
 import com.gitee.fastmybatis.core.query.Query;
+import com.gitee.fastmybatis.core.query.Sort;
 import com.gitee.fastmybatis.core.support.PageEasyui;
+import com.gitee.fastmybatis.core.util.MapperUtil;
 import com.gitee.fastmybatis.core.util.MyBeanUtil;
 import com.gitee.pagesmanager.server.api.param.DocCreateParam;
 import com.gitee.pagesmanager.server.api.param.DocSearchParam;
 import com.gitee.pagesmanager.server.api.param.DocUpdateParam;
 import com.gitee.pagesmanager.server.api.param.FolderCreateParam;
+import com.gitee.pagesmanager.server.api.param.IdParam;
+import com.gitee.pagesmanager.server.api.result.DocDetailVO;
 import com.gitee.pagesmanager.server.api.result.DocVO;
-import com.gitee.pagesmanager.server.common.MyMapperUtil;
 import com.gitee.pagesmanager.server.entity.Doc;
 import com.gitee.pagesmanager.server.entity.DocContent;
 import com.gitee.pagesmanager.server.entity.Project;
@@ -31,6 +34,7 @@ import org.springframework.util.Assert;
 public class DocApi {
 
     private static final int SHOW = 1;
+    private static final int BASE_ORDER_INDEX = 100000;
 
     @Autowired
     DocMapper docMapper;
@@ -39,8 +43,9 @@ public class DocApi {
     @Autowired
     ProjectMapper projectMapper;
 
+
     @Api(name = "doc.folder.create")
-    @ApiDocMethod(description = "添加文档")
+    @ApiDocMethod(description = "添加目录")
     public void createFolder(FolderCreateParam param) {
         Project project = projectMapper.getById(param.getProjectId());
         Assert.notNull(project, "项目不存在");
@@ -54,7 +59,7 @@ public class DocApi {
 
         Query query = new Query().eq("parent_id", 0);
         long count = docMapper.getCount(query);
-        long orderIndex = ++count * 100000;
+        long orderIndex = ++count * BASE_ORDER_INDEX;
         doc.setOrderIndex((int)orderIndex);
 
         docMapper.save(doc);
@@ -79,14 +84,17 @@ public class DocApi {
         doc.setIsShow(SHOW);
 
         int parentId = 0;
+        int orderIndex = param.getOrderIndex() == null ? BASE_ORDER_INDEX : param.getOrderIndex();
 
         if (param.getParentId() != null) {
             Doc parentDoc = docMapper.getById(param.getParentId());
             if (parentDoc != null) {
                 parentId = parentDoc.getId();
+                orderIndex = parentDoc.getOrderIndex() / 10;
             }
         }
         doc.setParentId(parentId);
+        doc.setOrderIndex(orderIndex);
 
         int i = docMapper.save(doc);
 
@@ -103,7 +111,7 @@ public class DocApi {
      *
      * @param param
      */
-    @Api(name = "doc.update")
+    @Api(name = "doc.page.update")
     @ApiDocMethod(description = "修改文档")
     public void update(DocUpdateParam param) {
         Doc doc = docMapper.getById(param.getId());
@@ -122,8 +130,31 @@ public class DocApi {
     @ApiDocMethod(description = "查询文档")
     public PageEasyui<DocVO> pageDoc(DocSearchParam param) {
         Query query = param.toQuery();
-        PageEasyui<DocVO> pageInfo = MyMapperUtil.queryForEasyuiDatagrid(docMapper, query, DocVO.class);
+        query.orderby("order_index", Sort.DESC).orderby("id", Sort.ASC);
+        PageEasyui<DocVO> pageInfo = MapperUtil.queryForEasyuiDatagrid(docMapper, query, DocVO.class);
         return pageInfo;
+    }
+
+    @Api(name = "doc.detail.get")
+    public DocDetailVO getRes(IdParam param) {
+
+        DocDetailVO vo = new DocDetailVO();
+
+        Doc doc = docMapper.getById(param.getId());
+        MyBeanUtil.copyProperties(doc, vo);
+
+        DocContent content = docContentMapper.getByColumn("doc_id", doc.getId());
+        if (content != null) {
+            vo.setContent(content.getContent());
+        }
+
+        Integer parentId = doc.getParentId();
+        if (parentId != null && parentId > 0) {
+            Doc parent = docMapper.getById(parentId);
+            vo.setParentName(parent.getName());
+        }
+
+        return vo;
     }
 
 

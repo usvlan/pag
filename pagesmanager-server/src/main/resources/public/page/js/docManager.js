@@ -60,10 +60,6 @@ var DocManager = (function () {
         });
     }
 
-    function newDoc(parentId) {
-
-    }
-    
     $('#btnAddFolder').click(function () {
         $('#addFolderFrm').form('reset');
         $('#addFolderDlg').dialog('open');
@@ -81,26 +77,34 @@ var DocManager = (function () {
             });
         }
     });
-    
+
+    $('#btnAddDoc').click(function () {
+        DocManager.newDoc();
+    });
+
     // public函数
     return {
         init:function () {
             initDocGrid();
             initProjectGrid();
         }
-        , createProject:function () {
-
-        }
-        , viewContent: function (index) {
+        , viewContent: function (id) {
             
         }
-        , update: function (index) {
-
+        , update: function (id) {
+            var row = $grid.treegrid('find', id);
+            var parentId = row.parentId;
+            top.location.href = 'docEditor.html?parentId=' + (parentId || 0) +
+                '&docId=' + row.id +
+                '&projectId=' + projectId +
+                '&opt=update';
         }
         , addDoc: function (id) {
             var row = $grid.treegrid('find', id);
-            console.log(row)
-            // newDoc(row.parentId)
+            this.newDoc(row.id);
+        }
+        , newDoc:function (parentId) {
+            top.location.href = 'docEditor.html?parentId=' + (parentId || 0) + '&projectId=' + projectId + '&opt=new';
         }
     }// end return;
 })();

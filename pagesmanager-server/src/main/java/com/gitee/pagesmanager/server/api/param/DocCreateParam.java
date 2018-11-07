@@ -21,8 +21,7 @@ public class DocCreateParam {
     @ApiDocField(description = "文档内容", required = true, example = "内容。。")
     private String content;
 
-    @NotNull(message = "排序索引不能空")
-    @ApiDocField(description = "排序索引", required = true, example = "100000")
+    @ApiDocField(description = "排序索引", example = "100000")
     private Integer orderIndex;
 
     private Integer parentId;
