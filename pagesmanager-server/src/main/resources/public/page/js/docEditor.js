@@ -71,6 +71,10 @@ var DocEditor = (function () {
         editor.setMarkdown(oldContent + content);
     }
 
+    function goBack() {
+        location.href = 'docManager.html?projectId=' + projectId;
+    }
+
     return {
         init: function () {
             if(!projectId) {
@@ -85,23 +89,22 @@ var DocEditor = (function () {
             initOperateBar(docId);
         }
         ,saveDoc:function (docId) {
-            var url = isNew ? 'doc.page.create' : 'doc.page.update'
-            var markdown = editor.getMarkdown();
-            var data = {
-                id:docId
-                ,name:$.trim($name.textbox('getValue'))
-                ,content:ApiUtil.htmlEncode(markdown)
-                ,parentId:parentId
-            };
-            if(isNew) {
-                data.projectId = projectId;
+            var $form = $('#docFrm');
+            var validateResult = $form.form('validate');
+            if (validateResult) {
+                var url = isNew ? 'doc.page.create' : 'doc.page.update';
+                var param = $form.form('getData');
+                var markdown = editor.getMarkdown();
+                param.id = docId;
+                param.content = ApiUtil.htmlEncode(markdown);
+                param.parentId = parentId;
+                ApiUtil.post(url, param, function(resp){
+                    goBack();
+                });
             }
-            ApiUtil.post(url,data,function(resp){
-                ApiUtil.goMain();
-            });
         }
         ,cancelDoc:function (docId) {
-            ApiUtil.goMain();
+            goBack();
         }
     };
 })();

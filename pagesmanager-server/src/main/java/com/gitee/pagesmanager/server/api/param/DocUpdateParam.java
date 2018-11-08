@@ -25,6 +25,9 @@ public class DocUpdateParam {
     @ApiDocField(description = "parentId", required = true)
     private Integer parentId;
 
+    @ApiDocField(description = "是否显示")
+    private Integer isShow = 1;
+
     public String getName() {
         return name;
     }
@@ -57,4 +60,11 @@ public class DocUpdateParam {
         this.parentId = parentId;
     }
 
+    public Integer getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(Integer isShow) {
+        this.isShow = isShow;
+    }
 }

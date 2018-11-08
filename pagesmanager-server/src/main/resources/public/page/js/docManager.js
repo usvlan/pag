@@ -20,15 +20,18 @@ var DocManager = (function () {
             ,idField:'id'
             ,treeField:'name'
             ,toolbar: '#tb'
+            ,pageSize:50
             ,columns : [[
                 {field: 'name', title: '文档名称', width: 200},
                 {field: 'cont', title: '内容', width: 60,formatter:function(val,obj,index){
-                    return '<a href="#" onclick="DocManager.viewContent(' + index + ')">查看</a>';
+                    return '<a href="#" onclick="DocManager.viewContent(' + obj.id + ')">查看</a>';
                 }},
                 {field: 'gmtCreate', title: '创建时间', width: 150},
+                {field: 'isShow', title: '是否显示', width: 150, formatter:function(val,obj,index){
+                    return val ? '<span class="green">是</span>' : '<span class="red">否</span>';
+                }},
                 {field: 'gmtUpdate', title: '修改时间', width: 150},
                 {field : '_opt',title : '操作', width: 100,formatter:function(val,obj,index){
-                    console.log(obj)
                     var id = obj.id;
                     var btns = [
                         '<a href="#" onclick="DocManager.update(' + id + ')">修改</a>'
@@ -79,8 +82,19 @@ var DocManager = (function () {
     });
 
     $('#btnAddDoc').click(function () {
-        DocManager.newDoc();
+        newDoc(0, projectId);
     });
+
+    function newDoc(parentId, projectId) {
+        location.href = 'docEditor.html?parentId=' + (parentId || 0) + '&projectId=' + projectId + '&opt=new';
+    }
+
+    function updateDoc(docId, parentId, projectId) {
+        location.href = 'docEditor.html?parentId=' + (parentId || 0) +
+            '&docId=' + docId +
+            '&projectId=' + projectId +
+            '&opt=update';
+    }
 
     // public函数
     return {
@@ -89,22 +103,20 @@ var DocManager = (function () {
             initProjectGrid();
         }
         , viewContent: function (id) {
-            
+            var row = $grid.treegrid('find', id);
+            var docId = row.id;
+            window.open('docView.html?docId=' + docId);
         }
         , update: function (id) {
             var row = $grid.treegrid('find', id);
             var parentId = row.parentId;
-            top.location.href = 'docEditor.html?parentId=' + (parentId || 0) +
-                '&docId=' + row.id +
-                '&projectId=' + projectId +
-                '&opt=update';
+            var docId = row.id;
+            updateDoc(docId, parentId, projectId);
         }
         , addDoc: function (id) {
             var row = $grid.treegrid('find', id);
-            this.newDoc(row.id);
-        }
-        , newDoc:function (parentId) {
-            top.location.href = 'docEditor.html?parentId=' + (parentId || 0) + '&projectId=' + projectId + '&opt=new';
+            var docId = row.id;
+            newDoc(docId, projectId);
         }
     }// end return;
 })();

@@ -16,7 +16,6 @@ public class DocCreateParam {
     @ApiDocField(description = "所属项目", required = true, example = "0")
     private Integer projectId;
 
-
     @NotBlank(message = "文档内容不能空")
     @ApiDocField(description = "文档内容", required = true, example = "内容。。")
     private String content;
@@ -25,6 +24,9 @@ public class DocCreateParam {
     private Integer orderIndex;
 
     private Integer parentId;
+
+    @ApiDocField(description = "是否显示")
+    private Integer isShow = 1;
 
 
     public String getName() {
@@ -66,5 +68,13 @@ public class DocCreateParam {
 
     public void setOrderIndex(Integer orderIndex) {
         this.orderIndex = orderIndex;
+    }
+
+    public Integer getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(Integer isShow) {
+        this.isShow = isShow;
     }
 }

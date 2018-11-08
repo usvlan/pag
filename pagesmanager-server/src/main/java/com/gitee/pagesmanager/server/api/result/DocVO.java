@@ -23,6 +23,8 @@ public class DocVO {
     /**  数据库字段：gm_update */
     private Date gmtUpdate;
 
+    private Integer isShow;
+
     public Integer getId() {
         return id;
     }
@@ -77,6 +79,14 @@ public class DocVO {
 
     public void setGmtUpdate(Date gmtUpdate) {
         this.gmtUpdate = gmtUpdate;
+    }
+
+    public Integer getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(Integer isShow) {
+        this.isShow = isShow;
     }
 
     @Override
