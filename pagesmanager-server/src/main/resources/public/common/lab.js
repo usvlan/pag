@@ -8,12 +8,8 @@
 
 // 始终需要加载的js
 var alwaysLoadJs = [
-    // jquery
-    '../easyui/jquery.min.js'
-    ,'../easyui/jquery.easyui.min.js'
-    ,'../easyui/locale/easyui-lang-zh_CN.js'
     // easyui ext js
-    ,'../easyui/ext/jquery.form.ext.js'
+    '../easyui/ext/jquery.form.ext.js'
     ,'../easyui/ext/jquery.datagrid.ext.js'
     ,'../easyui/ext/jquery.tree.ext.js'
     // common js
@@ -29,24 +25,17 @@ var alwaysLoadJs = [
  * @param loadSuccess 加载成功后触发
  */
 function importJs(jsArr, loadSuccess) {
-    // 先加载全局js
-    var lab = $LAB.script();
-    for(var i=0,len=alwaysLoadJs.length; i<len; i++) {
-        lab.script(alwaysLoadJs[i]);
-    }
-    // 立即加载
-    lab.wait();
-
     // 接着加载自定义的js
     jsArr = addVersion(jsArr);
-    for(var i=0,len=jsArr.length;i<len;i++) {
-        lab.script(jsArr[i]);
-    }
 
-    // 所有JS加载完毕后触发
-    lab.wait(function () {
-        loadSuccess && loadSuccess();
-    });
+    $LAB
+        .script(alwaysLoadJs) // 先加载全局js
+        .wait() // 执行加载
+        .script(jsArr) // 接着加载自定义的js
+        // 全部加载成后执行
+        .wait(function () {
+            loadSuccess && loadSuccess();
+        });
 }
 
 /**

@@ -11,10 +11,10 @@ public class DocUpdateParam {
     @ApiDocField(description = "文档id", required = true)
     private Integer id;
 
-    @NotBlank(message = "资源名称不能空")
-    @Length(min = 1, max = 20, message = "资源名称长度为1~20")
-    @ApiDocField(description = "资源名称", required = true)
-    // 资源名称
+    @NotBlank(message = "文档名称不能空")
+    @Length(min = 1, max = 20, message = "文档名称长度为1~20")
+    @ApiDocField(description = "文档名称", required = true)
+    // 文档名称
     private String name;
 
     @NotBlank(message = "资源内容不能空")

@@ -13,6 +13,7 @@ var DocManager = (function () {
                     });
                 }
             }
+            ,fitColumns: true
             ,rownumbers: true
             ,animate: true
             ,collapsible: true
@@ -22,16 +23,16 @@ var DocManager = (function () {
             ,toolbar: '#tb'
             ,pageSize:50
             ,columns : [[
-                {field: 'name', title: '文档名称', width: 200},
-                {field: 'cont', title: '内容', width: 60,formatter:function(val,obj,index){
+                {field: 'name', title: '文档名称'},
+                {field: 'cont', title: '内容',formatter:function(val,obj,index){
                     return '<a href="#" onclick="DocManager.viewContent(' + obj.id + ')">查看</a>';
                 }},
-                {field: 'gmtCreate', title: '创建时间', width: 150},
-                {field: 'isShow', title: '是否显示', width: 150, formatter:function(val,obj,index){
+                {field: 'gmtCreate', title: '创建时间'},
+                {field: 'isShow', title: '是否显示', formatter:function(val,obj,index){
                     return val ? '<span class="green">是</span>' : '<span class="red">否</span>';
                 }},
-                {field: 'gmtUpdate', title: '修改时间', width: 150},
-                {field : '_opt',title : '操作', width: 100,formatter:function(val,obj,index){
+                {field: 'gmtUpdate', title: '修改时间'},
+                {field : '_opt',title : '操作', formatter:function(val,obj,index){
                     var id = obj.id;
                     var btns = [
                         '<a href="#" onclick="DocManager.update(' + id + ')">修改</a>'
