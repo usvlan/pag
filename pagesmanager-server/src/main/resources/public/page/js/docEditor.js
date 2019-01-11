@@ -55,15 +55,19 @@ var DocEditor = (function () {
     // 插入模板按钮
     $('#btn-insertApiTpl').click(function(){
         if(!apiTpl) {
-            ApiUtil.post('template.system.get',{id:1},function(resp){
-                var template = resp.data;
-                apiTpl = template.content;
+            loadTemplateContent("api.txt", function (result) {
+                apiTpl = result;
                 setMarkDown(apiTpl);
             });
         } else {
             setMarkDown(apiTpl);
         }
     });
+
+    // 加载模板内容
+    function loadTemplateContent(templateFileName, callback) {
+        $.get("../page/template/" + templateFileName, "", callback);
+    }
 
     // 设置内容
     function setMarkDown(content) {
