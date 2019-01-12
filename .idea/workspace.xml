@@ -257,7 +257,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CmdUtil">
+  <component name="RunManager" selected="Application.PagesmanagerSpringbootApplication">
     <configuration name="CmdUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gitee.pagesmanager.server.common.CmdUtil" />
       <module name="pagesmanager-server" />
@@ -286,8 +286,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CmdUtil" />
         <item itemvalue="Application.PagesmanagerSpringbootApplication" />
+        <item itemvalue="Application.CmdUtil" />
       </list>
     </recent_temporary>
   </component>
