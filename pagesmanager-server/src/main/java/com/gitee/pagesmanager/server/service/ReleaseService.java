@@ -104,7 +104,7 @@ public class ReleaseService {
         // 如果是win操作系统
         if(isWin){
             // /Users/xxx/aaa/push.sh
-            String shellFilePath = gitLocalPath + "/push.bat";
+            String shellFilePath = gitLocalPath + File.separator + SCRIPT_BAT;
             // 执行完不关闭对话框
             String cmd = "cmd.exe /k "+  shellFilePath;
             // 执行完关闭对话框
@@ -112,7 +112,7 @@ public class ReleaseService {
             out = CmdUtil.runCmd(cmd);
         } else {
             // /Users/xxx/aaa/push.sh
-            String shellFilePath = gitLocalPath + "/push.sh";
+            String shellFilePath = gitLocalPath + File.separator + SCRIPT_SH;
             // 设置执行权限
             CmdUtil.runCmd("chmod +x " + shellFilePath);
             out = CmdUtil.runCmd(shellFilePath);
