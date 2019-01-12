@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e021e708-7307-4142-a288-17b75ad4b854" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/DocBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/ReleaseContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/DocCreateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/ReleaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_sidebar.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除其它文件.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/_coverpage.md" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_coverpage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/_navbar.md" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_navbar.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/_sidebar.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/run.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/DDL_mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/DDL_mysql.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/DDL_sqlite3.sql" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/DDL_sqlite3.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/ProjectApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/ProjectApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/ProjectAddParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/ProjectAddParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/message/CommonErrors.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/message/CommonErrors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除这里的文件.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/createProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/createProject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager.db" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager.db" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/pagesmanager-server/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_sidebar.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="19" selection-start-column="19" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/ReleaseService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="789">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/DocCreateService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1145">
+              <caret line="92" column="70" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_coverpage.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除其它文件.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor>
+                <caret column="3" selection-start-column="3" selection-end-column="3" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="105">
+                <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>资源名称</find>
+      <find>insertApiTpl</find>
+      <find>moduleItems</find>
+      <find>addDoc</find>
+      <find>parentId</find>
+      <find>$parentName</find>
+      <find>所属项目</find>
+      <find>docs</find>
+      <find>API_FOLDER</find>
+      <find>releaseBean</find>
+      <find>release</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>文档名称</replace>
+      <replace>children</replace>
+      <replace>releaseContext</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/DocUpdateParam.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/main.html" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docView.html" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docEditor.html" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/common/lab.js" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/TemplateApi.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/template/api.json" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/template/api.txt" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/createProject.html" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/DDL_sqlite3.sql" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/DDL_mysql.sql" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Project.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/ProjectAddParam.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docManager.html" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/application-dev.properties" />
+        <option value="$PROJECT_DIR$/pagesmanager-dest/README.md" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/ProjectApi.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/DocBean.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/ReleaseBean.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/ReleaseContext.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docEditor.js" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/message/CommonErrors.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-dest/docs/README.md" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/DocCreateService.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/README.md" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docManager.js" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除其它文件.txt" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_sidebar.md" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/ReleaseService.java" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/README.md" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/index.html" />
+        <option value="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
+    <option name="y" value="25" />
+    <option name="width" value="1400" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="pagesmanager-server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="pagesmanager-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="pagesmanager-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="pagesmanager-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="pagesmanager-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pagesmanager-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pagesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="pagesmanager-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs" />
+      <recent name="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.CmdUtil">
+    <configuration name="CmdUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gitee.pagesmanager.server.common.CmdUtil" />
+      <module name="pagesmanager-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gitee.pagesmanager.server.common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PagesmanagerSpringbootApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gitee.pagesmanager.server.PagesmanagerSpringbootApplication" />
+      <module name="pagesmanager-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gitee.pagesmanager.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CmdUtil" />
+        <item itemvalue="Application.PagesmanagerSpringbootApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e021e708-7307-4142-a288-17b75ad4b854" name="Default Changelist" comment="" />
+      <created>1547120101266</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547120101266</updated>
+      <workItem from="1547120104951" duration="5010000" />
+      <workItem from="1547204422826" duration="27565000" />
+    </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1547125457830</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1547125457830</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1547212077773</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1547212077773</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="32575000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="4" y="25" width="1400" height="784" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42341042" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.20809248" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/easyui/themes/material/easyui.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="37" selection-start-line="37" selection-end-line="37" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="84" selection-start-line="19" selection-start-column="84" selection-end-line="19" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/DocUpdateParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/TemplateApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/common/lab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/template/api.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-303">
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+            <element signature="e#312#318#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/createProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/DDL_sqlite3.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="39" column="37" lean-forward="true" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/DDL_mysql.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/createProject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/ProjectAddParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+          <folding>
+            <element signature="e#1510#1511#0" expanded="true" />
+            <element signature="e#1554#1555#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/IdParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/oschina/durcframework/easyopen/1.14.0/easyopen-1.14.0.jar!/com/gitee/easyopen/message/Errors.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/application-dev.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-dest/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="126">
+            <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.5/commons-io-2.5.jar!/org/apache/commons/io/FileUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="689" column="26" selection-start-line="689" selection-start-column="26" selection-end-line="689" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.5/commons-io-2.5-sources.jar!/org/apache/commons/io/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="1594" column="6" lean-forward="true" selection-start-line="1594" selection-start-column="6" selection-end-line="1594" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="221" column="51" selection-start-line="221" selection-start-column="51" selection-end-line="221" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/DocContent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Doc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="31" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/DocBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding>
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1100#1101#0" expanded="true" />
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
+            <element signature="e#1215#1216#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/result/DocVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/DocSearchParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/ProjectApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="112" column="28" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="31" column="26" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="31" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/ReleaseContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+          <folding>
+            <element signature="e#187#188#0" expanded="true" />
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#422#423#0" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#926#927#0" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/DocApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/DocCreateParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="114" column="29" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/message/CommonErrors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/common/ApiUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1590" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-dest/run.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-dest/docs/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="3" selection-start-column="3" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_navbar.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_coverpage.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除其它文件.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/files/101_easyopen介绍.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_sidebar.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/ReleaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="789">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="105">
+            <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="3" selection-start-column="3" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/DocCreateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1145">
+          <caret line="92" column="70" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

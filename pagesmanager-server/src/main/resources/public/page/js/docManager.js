@@ -64,6 +64,13 @@ var DocManager = (function () {
         });
     }
 
+    $('#btnRelease').click(function () {
+        var param = {projectId:projectId};
+        ApiUtil.post('project.release', param, function (resp) {
+            MsgUtil.topMsg("后台发布中...");
+        });
+    });
+
     $('#btnAddFolder').click(function () {
         $('#addFolderFrm').form('reset');
         $('#addFolderDlg').dialog('open');
@@ -115,8 +122,7 @@ var DocManager = (function () {
             updateDoc(docId, parentId, projectId);
         }
         , addDoc: function (id) {
-            var row = $grid.treegrid('find', id);
-            var docId = row.id;
+            var docId = id
             newDoc(docId, projectId);
         }
     }// end return;

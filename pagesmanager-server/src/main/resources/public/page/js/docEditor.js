@@ -15,6 +15,7 @@ var DocEditor = (function () {
 
     // 初始化
     function initNew() {
+        initParentFolder(parentId);
         initMarkdown();
     }
 
@@ -79,6 +80,13 @@ var DocEditor = (function () {
         location.href = 'docManager.html?projectId=' + projectId;
     }
 
+    function initParentFolder(parentId) {
+        ApiUtil.post('doc.detail.get',{id:parentId},function(resp){
+            var docDetail = resp.data;
+            $parentName.textbox('setValue', docDetail.name);
+        });
+    }
+
     return {
         init: function () {
             if(!projectId) {
@@ -102,6 +110,7 @@ var DocEditor = (function () {
                 param.id = docId;
                 param.content = ApiUtil.htmlEncode(markdown);
                 param.parentId = parentId;
+                param.projectId = projectId;
                 ApiUtil.post(url, param, function(resp){
                     goBack();
                 });

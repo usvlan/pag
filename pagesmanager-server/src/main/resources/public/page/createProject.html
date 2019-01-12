@@ -15,19 +15,25 @@
     <div class="markdown-section">
         <h2>创建项目</h2>
         <div style="margin:20px 0;"></div>
-        <div class="easyui-panel" title="新项目" style="width: 600px;">
+        <div class="easyui-panel" title="新项目" style="width: 800px;">
             <div style="padding:10px 60px 20px 60px">
                 <form id="frm" method="post">
                     <table cellpadding="5" border="0">
                         <tr>
                             <td><em>*</em> 项目名称</td>
-                            <td><input class="easyui-textbox" type="text" name="name" data-options="required:true,width:300"></input></td>
+                            <td><input class="easyui-textbox" type="text" name="name" data-options="required:true,width:400"></input></td>
                         </tr>
                         <tr>
+                            <td><em>*</em> Git项目URL</td>
+                            <td>
+                                <input class="easyui-textbox" type="text" name="gitUrl" data-options="required:true,width:400" /><br>
+                                <span class="tip">Git URL，如：https://gitee.com/xxx/demo.git</span>
+                            </td>
+                        </tr><tr>
                             <td><em>*</em> 本地Git项目路径</td>
                             <td>
-                                <input class="easyui-textbox" type="text" name="localGitPath" data-options="required:true,width:300" /><br>
-                                <span class="tip">Git上clone下来的目录，如：D:/project/myproject/</span>
+                                <input class="easyui-textbox" type="text" name="localGitPath" data-options="required:true,width:400" /><br>
+                                <span class="tip">本地Git项目路径，如：D:/project/myproject/</span>
                             </td>
                         </tr>
                         <!--<tr>

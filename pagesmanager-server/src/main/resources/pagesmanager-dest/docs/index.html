@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>接口文档</title>
+  <title>在线文档</title>
   <link rel="icon" href="_media/favicon.ico">
   <meta name="google-site-verification" content="6t0LoIeFksrjF4c9sqUEsVXiQNxLp2hgoqo0KryT-sE" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -22,19 +22,16 @@
 	.markdown-section{
 		max-width: 90%;
 	}
-	.sidebar li {
-		margin: 0px 0;
-	}
+    .sidebar li {
+      margin: 0px 0;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">加载中 ...</div>
   <script>
-    window.$docsify = {
-	  alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
-	  },
+    window.$docsify = {      
       auto2top: true,
       coverpage: false,
       executeScript: true,
@@ -62,7 +59,9 @@
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/ga.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-markdown.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
 </body>
 

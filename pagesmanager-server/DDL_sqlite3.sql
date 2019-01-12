@@ -35,6 +35,7 @@ CREATE TABLE project (
     id         INTEGER      PRIMARY KEY AUTOINCREMENT,
     name       VARCHAR (50) NOT NULL,
     local_git_path VARCHAR (100),
+    git_url        VARCHAR (200),
     git_cmd        VARCHAR (200),
     gmt_create DATETIME     NOT NULL,
     gmt_update DATETIME     NOT NULL

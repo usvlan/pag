@@ -18,7 +18,12 @@ public class ProjectAddParam {
     /**  数据库字段：local_git_path */
     private String localGitPath;
 
-    @ApiDocField(description = "git命令", example = "")
+    @NotBlank(message = "GitUrl不能为空")
+    @Length(max = 200, message = "GitUrl长度必须小于等于200")
+    @ApiDocField(description = "GitUrl", required = true, example = "http://www.xxx/aaa.git")
+    private String gitUrl;
+
+    @ApiDocField(description = "git命令")
     /**  数据库字段：git_cmd */
     private String gitCmd;
 
@@ -46,4 +51,11 @@ public class ProjectAddParam {
         this.name = name;
     }
 
+    public String getGitUrl() {
+        return gitUrl;
+    }
+
+    public void setGitUrl(String gitUrl) {
+        this.gitUrl = gitUrl;
+    }
 }

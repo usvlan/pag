@@ -28,6 +28,9 @@ public class Project {
     /**  数据库字段：git_cmd */
     private String gitCmd;
 
+    /**  数据库字段：git_url */
+    private String gitUrl;
+
     /**  数据库字段：gmt_create */
     private Date gmtCreate;
 
@@ -62,6 +65,14 @@ public class Project {
     /**  数据库字段：project.local_git_path */
     public String getLocalGitPath() {
         return this.localGitPath;
+    }
+
+    public String getGitUrl() {
+        return gitUrl;
+    }
+
+    public void setGitUrl(String gitUrl) {
+        this.gitUrl = gitUrl;
     }
 
     /**  数据库字段：project.git_cmd */
@@ -139,6 +150,8 @@ public class Project {
         sb.append("name=").append(name);
         sb.append(", ");
         sb.append("localGitPath=").append(localGitPath);
+        sb.append(", ");
+        sb.append("gitUrl=").append(gitUrl);
         sb.append(", ");
         sb.append("gitCmd=").append(gitCmd);
         sb.append(", ");
