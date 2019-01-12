@@ -67,7 +67,7 @@ var DocManager = (function () {
     $('#btnRelease').click(function () {
         var param = {projectId:projectId};
         ApiUtil.post('project.release', param, function (resp) {
-            MsgUtil.topMsg("后台发布中...");
+            MsgUtil.topMsg("发布成功");
         });
     });
 

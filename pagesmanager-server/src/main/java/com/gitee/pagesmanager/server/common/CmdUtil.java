@@ -12,17 +12,11 @@ import java.io.InputStreamReader;
  */
 public class CmdUtil {
 
+    public static final String SUCCESS = "`OK`";
+
     public static String runCmd(String cmd) {
         try {
             return runCmd(Runtime.getRuntime().exec(cmd));
-        } catch (IOException e) {
-            return e.getMessage();
-        }
-    }
-
-    public static String runCmd(String[] cmdarr) {
-        try {
-            return runCmd(Runtime.getRuntime().exec(cmdarr));
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -37,13 +31,11 @@ public class CmdUtil {
             if (StringUtils.isNotBlank(errStr)) {
                 return str + errStr;
             }
-            return str;
+            return str + SUCCESS;
         } catch (Exception e) {
             return e.getMessage();
         }
     }
-
-
 
 
     public static String processStdout(InputStream in) throws IOException {
@@ -57,11 +49,10 @@ public class CmdUtil {
     }
 
 
-    public static void main(String[] args) {
-//        String[] arr = {"sh", ""}
-        runCmd("chmod +x /Users/thc/IdeaProject/pages-doc/push.sh");
-        String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
-        System.out.println(out);
-
-    }
+//    public static void main(String[] args) {
+//        runCmd("chmod +x /Users/thc/IdeaProject/pages-doc/push.sh");
+//        String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
+//        System.out.println(out);
+//
+//    }
 }
