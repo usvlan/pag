@@ -12,8 +12,6 @@ import java.io.InputStreamReader;
  */
 public class CmdUtil {
 
-    public static final String SUCCESS = "`OK`";
-
     public static String runCmd(String cmd) {
         try {
             return runCmd(Runtime.getRuntime().exec(cmd));
@@ -31,7 +29,7 @@ public class CmdUtil {
             if (StringUtils.isNotBlank(errStr)) {
                 return str + errStr;
             }
-            return str + SUCCESS;
+            return str;
         } catch (Exception e) {
             return e.getMessage();
         }

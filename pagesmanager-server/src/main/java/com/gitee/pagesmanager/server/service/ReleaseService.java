@@ -12,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * 发布业务类
@@ -118,10 +116,6 @@ public class ReleaseService {
             // 设置执行权限
             CmdUtil.runCmd("chmod +x " + shellFilePath);
             out = CmdUtil.runCmd(shellFilePath);
-        }
-        if(out != null && !out.endsWith(CmdUtil.SUCCESS)) {
-            logger.error("发布错误，cmd结果:{}", out);
-            throw CommonErrors.RELEASE_ERROR.getException();
         }
     }
 
