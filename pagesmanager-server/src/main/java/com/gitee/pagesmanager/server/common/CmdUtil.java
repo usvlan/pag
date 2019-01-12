@@ -58,6 +58,8 @@ public class CmdUtil {
 
 
     public static void main(String[] args) {
+//        String[] arr = {"sh", ""}
+        runCmd("chmod +x /Users/thc/IdeaProject/pages-doc/push.sh");
         String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
         System.out.println(out);
 

@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e021e708-7307-4142-a288-17b75ad4b854" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/DocBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/ReleaseContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/DocCreateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/service/ReleaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_sidebar.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除其它文件.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/_coverpage.md" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_coverpage.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/_navbar.md" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/_navbar.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/_sidebar.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/run.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-dest/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/DDL_mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/DDL_mysql.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/DDL_sqlite3.sql" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/DDL_sqlite3.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/ProjectApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/ProjectApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/ProjectAddParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/api/param/ProjectAddParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/entity/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/message/CommonErrors.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/message/CommonErrors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/pagesmanager-dest/docs/请不要删除这里的文件.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/createProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/createProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/docManager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/resources/public/page/js/docManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagesmanager.db" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/pagesmanager-server/target/" />
@@ -90,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+            <state relative-caret-position="139">
+              <caret line="61" column="35" lean-forward="true" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -360,7 +330,7 @@
       <option name="presentableId" value="Default" />
       <updated>1547120101266</updated>
       <workItem from="1547120104951" duration="5010000" />
-      <workItem from="1547204422826" duration="27565000" />
+      <workItem from="1547204422826" duration="27816000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1547125457830</created>
@@ -380,20 +350,20 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32575000" />
+    <option name="totallyTimeSpent" value="32826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="25" width="1400" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.42341042" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.20809248" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42341042" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.20809248" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -855,8 +825,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pagesmanager-server/src/main/java/com/gitee/pagesmanager/server/common/CmdUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+        <state relative-caret-position="139">
+          <caret line="61" column="35" lean-forward="true" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
