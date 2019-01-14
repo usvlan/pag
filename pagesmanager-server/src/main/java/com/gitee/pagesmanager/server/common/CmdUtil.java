@@ -12,6 +12,7 @@ public class CmdUtil {
 
     /**
      * 执行cmd命令
+     *
      * @param cmd
      * @return
      */
@@ -50,6 +51,7 @@ public class CmdUtil {
         }
         return out.toString();
     }
+
 
 
     public static void main(String[] args) {
