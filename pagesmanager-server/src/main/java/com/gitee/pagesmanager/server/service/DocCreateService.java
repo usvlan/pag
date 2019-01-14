@@ -96,6 +96,7 @@ public class DocCreateService {
     private List<DocBean> listAllDoc(int projectId) {
         Query query = new Query();
         query.eq("project_id", projectId)
+                .eq("is_show", 1)
                 .orderby("order_index", Sort.DESC).orderby("id", Sort.ASC);
 
         List<Doc> docList = docMapper.list(query);

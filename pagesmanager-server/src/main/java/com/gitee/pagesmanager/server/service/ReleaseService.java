@@ -68,7 +68,6 @@ public class ReleaseService {
      */
     private void copyDocTemplate(ReleaseContext releaseContext) throws IOException {
         String destPath = releaseContext.getDestPath();
-        String localGitPath = releaseContext.getLocalGitPath();
         // 先删除老的模板
         FileUtils.deleteQuietly(new File(destPath));
         ClassPathResource destRes = new ClassPathResource(DEST_FOLDER);

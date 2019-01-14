@@ -1,5 +1,3 @@
-var $docVontent = $('#docVontent');
-var $name = $('#name').textbox();
 var $parentName = $('#parentName').textbox();
 
 var docId = ApiUtil.getParam('docId');
@@ -34,11 +32,7 @@ var DocEditor = (function () {
         if(docId) {
             ApiUtil.post('doc.detail.get',{id:docId},function(resp){
                 var docDetail = resp.data;
-
-                $name.textbox('setValue', docDetail.name);
-                $parentName.textbox('setValue', docDetail.parentName);
-                $docVontent.html(docDetail.content);
-
+                $('#docFrm').form('load', docDetail);
                 initMarkdown();
             });
         }

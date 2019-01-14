@@ -13,7 +13,6 @@ var alwaysLoadJs = [
     ,'../easyui/ext/jquery.datagrid.ext.js'
     ,'../easyui/ext/jquery.tree.ext.js'
     // common js
-    ,'../common/sdk.js'
     ,'../common/MsgUtil.js'
     ,'../common/FunUtil.js'
     ,'../common/ApiUtil.js'

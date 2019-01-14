@@ -1,36 +1,16 @@
 /**
 请求示例：
 
-var name = 'goods.get';
-var version = '';
-
-var jsonData = {};
- // form表单
- var formArray = _parent.find('form').serializeArray();
- 
- jQuery.each(formArray, function(i, field){
-     jsonData[field.name] = field.value;
- });
- 
- ApiUtil.post(name,jsonData,version,function(resp,postDataStr){
-     console.log(resp);  
- });
+ var data = $form.form('getData');
+ ApiUtil.post('project.create', data, function (resp) {
+	location.href = 'main.html';
+});
 */
 var ApiUtil = (function(){	
 	var params = {};
-	var JWT_KEY = "easyconf_jwt";
-	var ACCESS_TOKEN_KEY = "easyconf_access_token";
 
 	var url = '../api';
-	var app_key = 'test';
-	var secret = '123456';
-	
-	sdk.config({
-		url : url
-	    ,app_key : app_key
-	    ,secret : secret
-	});
-    
+
     (function() {
     	var aPairs, aTmp;  
         var queryString = window.location.search.toString();
@@ -43,14 +23,6 @@ var ApiUtil = (function(){
     })();
     
     /* **************私有方法************** */
-    function getJwt() {
-    	return localStorage.getItem(JWT_KEY) || '';
-    }
-
-    function getAccessToken() {
-        return localStorage.getItem(ACCESS_TOKEN_KEY) || '';
-    }
-    
   	//Html编码获取Html转义实体
 	function htmlEncode(value){ 
 		return $('<div/>').text(value).html(); 
@@ -59,45 +31,43 @@ var ApiUtil = (function(){
 	function htmlDecode(value){ 
 		return $('<div/>').html(value).text(); 
 	} 
-	
-	function add0(m){return m<10?'0'+m:m }
 
-    function formatDate(time)
-    {
-        var y = time.getFullYear();
-        var m = time.getMonth()+1;
-        var d = time.getDate();
-        var h = time.getHours();
-        var mm = time.getMinutes();
-        var s = time.getSeconds();
-        return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
-    }
-    /* ************************************* */
-    
+
+
     return {    	
     	post:function(name,data,callback) {
-    		sdk.post({
-    			name   : name // 接口名
-    			,data  : data // 请求参数
-				,access_token : getAccessToken()
-    			,callback:function(resp,postDataStr) { // 成功回调
+    		var param = {
+    			name : name,
+				data : JSON.stringify(data)
+			}
+			$.ajax({
+				url: url,
+				type: 'post',
+				cache: false,
+				dataType: 'json',
+				data: param,
+				charset: 'utf-8',
+				success: function (resp) {
 					MaskUtil.unmask();
-    				var code = resp.code;
-                	if(!code || code == '-9') {
-                        MsgUtil.topMsg('系统错误');
-                		return;
-                	}
-                	if(code == '-100' || code == '18' || code == '21') { // 未登录
-                		ApiUtil.logout();
-                		return;
-                	}
-                	if(code == '0') { // 成功
-                		callback(resp,postDataStr);
-                	} else {
-                        MsgUtil.topMsg(resp.msg);
-                	}
-    			}
-    		});
+					var code = resp.code;
+					if(!code || code == '-9') {
+						MsgUtil.topMsg('系统错误');
+						return;
+					}
+					if(code == '-100' || code == '18' || code == '21') { // 未登录
+						ApiUtil.logout();
+						return;
+					}
+					if(code == '0') { // 成功
+						callback(resp);
+					} else {
+						MsgUtil.topMsg(resp.msg);
+					}
+				},
+				error: function () {
+					MsgUtil.topMsg('系统错误');
+				}
+			});
          }
     	,logout:function() {
             this.post('nologin.admin.logout',{},function (resp) {
