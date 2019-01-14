@@ -32,7 +32,7 @@ public class CmdUtil {
             if (StringUtils.isNotBlank(errStr)) {
                 return str + errStr;
             }
-            process.waitFor();
+            in.close();
             return str;
         } catch (Exception e) {
             return e.getMessage();
@@ -53,7 +53,7 @@ public class CmdUtil {
 
     public static void main(String[] args) {
         runCmd("chmod +x /Users/thc/IdeaProject/pages-doc/push.sh");
-        String out = runCmd("/bin/sh /Users/thc/IdeaProject/pages-doc/push.sh");
+        String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
         System.out.println(out);
     }
 }
