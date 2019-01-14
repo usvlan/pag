@@ -25,6 +25,7 @@ public class CmdUtil {
 
     private static String runCmd(Process process) {
         try {
+            process.waitFor();
             InputStream err = process.getErrorStream();
             InputStream in = process.getInputStream();
             String str = processStdout(in);
