@@ -25,7 +25,6 @@ public class CmdUtil {
 
     private static String runCmd(Process process) {
         try {
-            process.waitFor();
             InputStream err = process.getErrorStream();
             InputStream in = process.getInputStream();
             String str = processStdout(in);
@@ -33,6 +32,7 @@ public class CmdUtil {
             if (StringUtils.isNotBlank(errStr)) {
                 return str + errStr;
             }
+            process.waitFor();
             return str;
         } catch (Exception e) {
             return e.getMessage();
