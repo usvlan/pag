@@ -8,8 +8,17 @@ public class PropertygridRow {
     private String value;
     private String group;
     private String editor;
+    private String field;
 
     public PropertygridRow(String name, Object value, String group, String editor) {
+        this.name = name;
+        this.value = value == null ? "" : String.valueOf(value);
+        this.group = group;
+        this.editor = editor;
+    }
+
+    public PropertygridRow(String field, String name, Object value, String group, String editor) {
+        this.field = field;
         this.name = name;
         this.value = value == null ? "" : String.valueOf(value);
         this.group = group;
@@ -46,5 +55,13 @@ public class PropertygridRow {
 
     public void setEditor(String editor) {
         this.editor = editor;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
     }
 }

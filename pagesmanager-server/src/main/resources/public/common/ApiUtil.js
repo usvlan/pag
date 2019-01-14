@@ -81,6 +81,7 @@ var ApiUtil = (function(){
     			,data  : data // 请求参数
 				,access_token : getAccessToken()
     			,callback:function(resp,postDataStr) { // 成功回调
+					MaskUtil.unmask();
     				var code = resp.code;
                 	if(!code || code == '-9') {
                         MsgUtil.topMsg('系统错误');

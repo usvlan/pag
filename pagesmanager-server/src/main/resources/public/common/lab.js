@@ -17,6 +17,7 @@ var alwaysLoadJs = [
     ,'../common/MsgUtil.js'
     ,'../common/FunUtil.js'
     ,'../common/ApiUtil.js'
+    ,'../common/MaskUtil.js'
 ]
 
 /**

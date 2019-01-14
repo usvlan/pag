@@ -9,6 +9,19 @@ import java.io.*;
  */
 public class CmdUtil {
 
+    /**
+     * 执行cmd命令
+     *
+     * @param cmd
+     * @return
+     */
+    public static String runCmd(String cmd, String dir) {
+        try {
+            return runCmd(Runtime.getRuntime().exec(cmd, null, new File(dir)));
+        } catch (IOException e) {
+            return e.getMessage();
+        }
+    }
 
     /**
      * 执行cmd命令
@@ -26,7 +39,7 @@ public class CmdUtil {
 
     private static String runCmd(Process process) {
         try {
-            process.waitFor();
+
             InputStream err = process.getErrorStream();
             InputStream in = process.getInputStream();
             String str = processStdout(in);
@@ -35,6 +48,7 @@ public class CmdUtil {
                 return str + errStr;
             }
             in.close();
+            process.waitFor();
             return str;
         } catch (Exception e) {
             return e.getMessage();
@@ -55,8 +69,8 @@ public class CmdUtil {
 
 
     public static void main(String[] args) {
-        runCmd("chmod +x /Users/thc/IdeaProject/pages-doc/push.sh");
-        String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
+        runCmd("chmod +x push.sh", "/Users/thc/IdeaProject/pages-doc");
+        String out = runCmd("sh push.sh", "/Users/thc/IdeaProject/pages-doc");
         System.out.println(out);
     }
 }

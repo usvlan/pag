@@ -12,7 +12,9 @@ import com.gitee.fastmybatis.core.support.PageEasyui;
 import com.gitee.fastmybatis.core.util.MyBeanUtil;
 import com.gitee.pagesmanager.server.api.param.IdParam;
 import com.gitee.pagesmanager.server.api.param.ProjectAddParam;
+import com.gitee.pagesmanager.server.api.param.PropertyGridParam;
 import com.gitee.pagesmanager.server.api.result.PropertygridRow;
+import com.gitee.pagesmanager.server.common.FrontException;
 import com.gitee.pagesmanager.server.entity.Project;
 import com.gitee.pagesmanager.server.mapper.ProjectMapper;
 import com.gitee.pagesmanager.server.service.ReleaseService;
@@ -23,7 +25,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.sqlite.date.DateFormatUtils;
 
 import javax.validation.constraints.Min;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author tanghc
@@ -56,6 +61,12 @@ public class ProjectApi {
         Project project = new Project();
         MyBeanUtil.copyPropertiesIgnoreNull(param, project);
         projectMapper.save(project);
+
+        try {
+            releaseService.copyScriptFileToWorkspace(project.getLocalGitPath());
+        } catch (IOException e) {
+            throw new FrontException("创建项目失败");
+        }
     }
 
     /**
@@ -83,12 +94,12 @@ public class ProjectApi {
         String baseGroup = "基本信息";
         String gitGroup = "Git信息";
         List<PropertygridRow> list = Lists.newArrayList(
-                new PropertygridRow("项目名称", project.getName(), baseGroup, "text")
+                new PropertygridRow("name", "项目名称", project.getName(), baseGroup, "text")
                 , new PropertygridRow("创建时间", DateFormatUtils.format(project.getGmtCreate(), "yyyy-MM-dd HH:mm:ss"), baseGroup, null)
                 , new PropertygridRow("修改时间", DateFormatUtils.format(project.getGmtUpdate(), "yyyy-MM-dd HH:mm:ss"), baseGroup, null)
 
-                , new PropertygridRow("GitUrl", project.getGitUrl(), gitGroup, "text")
-                , new PropertygridRow("本地Git项目路径", project.getLocalGitPath(), gitGroup, "text")
+                , new PropertygridRow("git_url","GitUrl", project.getGitUrl(), gitGroup, "text")
+                , new PropertygridRow("local_git_path","本地Git项目路径", project.getLocalGitPath(), gitGroup, "text")
         );
 
         PageEasyui<PropertygridRow> pageInfo = new PageEasyui<>();
@@ -97,6 +108,17 @@ public class ProjectApi {
 
         return pageInfo;
     }
+
+    @Api(name = "project.propertygrid.update")
+    @ApiDocMethod(description = "修改属性表格")
+    void updatePropertyGrid(PropertyGridParam param) {
+        Query query = new Query();
+        query.eq("id", param.getId());
+        Map<String, Object> map = new HashMap<>();
+        map.put(param.getField(), param.getValue());
+        projectMapper.updateByMap(map, query);
+    }
+
 
     @Api(name = "project.release")
     @ApiDocMethod(description = "发布文档")

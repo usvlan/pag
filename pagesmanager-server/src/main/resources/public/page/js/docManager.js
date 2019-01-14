@@ -60,11 +60,30 @@ var DocManager = (function () {
             showGroup: true,
             fit: true,
             border: false,
-            scrollbarSize: 0
+            scrollbarSize: 0,
+            onAfterEdit:function (rowIndex, rowData, changes) {
+                if($.isEmptyObject(changes)) {
+                    return false;
+                }
+                if(rowData.editor == 'text') {
+                    var field = rowData.field;
+                    var val = rowData.value;
+                    var param = {
+                        id:projectId,
+                        field:field,
+                        value:val
+                    }
+                    ApiUtil.post('project.propertygrid.update', param, function (resp) {
+                        MsgUtil.topMsg("修改成功");
+                    });
+                }
+            }
+            
         });
     }
 
     $('#btnRelease').click(function () {
+        MaskUtil.mask("发布中...");
         var param = {projectId:projectId};
         ApiUtil.post('project.release', param, function (resp) {
             MsgUtil.topMsg("发布成功");
