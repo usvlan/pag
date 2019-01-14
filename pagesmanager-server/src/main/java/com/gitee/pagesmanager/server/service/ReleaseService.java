@@ -117,6 +117,7 @@ public class ReleaseService {
             CmdUtil.runCmd("chmod +x " + shellFilePath);
             out = CmdUtil.runCmd(shellFilePath);
         }
+        logger.info("cmd执行结果:\n{}", out);
     }
 
 
