@@ -2,15 +2,20 @@ package com.gitee.pagesmanager.server.common;
 
 import org.apache.commons.lang.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * @author tanghc
  */
 public class CmdUtil {
+
+    public static String runCmd(String cmd, String dir) {
+        try {
+            return runCmd(Runtime.getRuntime().exec(cmd, null, new File(dir)));
+        } catch (IOException e) {
+            return e.getMessage();
+        }
+    }
 
     public static String runCmd(String cmd) {
         try {
@@ -53,5 +58,7 @@ public class CmdUtil {
         String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
         System.out.println(out);
 
+        out = runCmd("push.sh", "/Users/thc/IdeaProject/pages-doc");
+        System.out.println(out);
     }
 }
