@@ -9,14 +9,12 @@ import java.io.*;
  */
 public class CmdUtil {
 
-    public static String runCmd(String cmd, String dir) {
-        try {
-            return runCmd(Runtime.getRuntime().exec(cmd, null, new File(dir)));
-        } catch (IOException e) {
-            return e.getMessage();
-        }
-    }
 
+    /**
+     * 执行cmd命令
+     * @param cmd
+     * @return
+     */
     public static String runCmd(String cmd) {
         try {
             return runCmd(Runtime.getRuntime().exec(cmd));
@@ -55,10 +53,7 @@ public class CmdUtil {
 
     public static void main(String[] args) {
 //        runCmd("chmod +x /Users/thc/IdeaProject/pages-doc/push.sh");
-        String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
-        System.out.println(out);
-
-        out = runCmd("push.sh", "/Users/thc/IdeaProject/pages-doc");
-        System.out.println(out);
+//        String out = runCmd("/Users/thc/IdeaProject/pages-doc/push.sh");
+//        System.out.println(out);
     }
 }
