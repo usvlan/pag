@@ -32,13 +32,15 @@ public class DocCreateService {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static final String SIDEBAR_FILENAME = "docs/_sidebar.md";
+    private static final String SIDEBAR_FILENAME = "_sidebar.md";
 
     private static final String MODULE_TPL = "\r\n\r\n* %s\r\n\r\n";
     // files/hello.md
-    private static final String FILE_NAME_TPL = "files/%s.md";
+    private static final String FILE_NAME_TPL = "%s.md";
     //  *[hello](files/hello.md)
     private static final String FILE_TPL = "  * [%s](%s)\r\n";
+
+    private static final String FILE_FOLDER_NAME = "files";
 
     @Autowired
     DocMapper docMapper;
@@ -53,17 +55,30 @@ public class DocCreateService {
     public void createMarkdownDoc(ReleaseContext releaseContext) throws IOException {
         List<DocBean> docList = this.listAllDoc(releaseContext.getId());
         List<DocBean> docTree = buildTreeData(docList);
+        // 项目根目录
         String destPath = releaseContext.getDestPath();
+        String docsPath = destPath + File.separator + "docs";
+        // 存放markdown目录，project/docs/files
+        String docFolderPath = docsPath + File.separator + FILE_FOLDER_NAME;
         logger.info("生成markdown文档文件，保存路径：{}", destPath);
         
-        this.createSidebar(docTree, releaseContext);
-        
+        this.createSidebar(docTree, docsPath);
+        this.removeDocFiles(docFolderPath);
+
         for (DocBean docBean : docTree) {
             List<DocBean> children = docBean.getChildren();
             for (DocBean item : children) {
-                this.createDocFile(item, destPath);
+                this.createDocFile(item, docFolderPath);
             }
         }
+    }
+
+    /**
+     * 删除本地文档
+     * @param docFolderPath
+     */
+    private void removeDocFiles(String docFolderPath) {
+        FileUtils.deleteQuietly(new File(docFolderPath));
     }
 
     /**
@@ -71,26 +86,25 @@ public class DocCreateService {
      *
      * @param docTree
      */
-    protected void createSidebar(Collection<DocBean> docTree, ReleaseContext releaseContext) throws IOException {
+    protected void createSidebar(Collection<DocBean> docTree, String docsPath) throws IOException {
         StringBuilder sidebarContent = new StringBuilder();
         for (DocBean docBean : docTree) {
             // * Getting started 一级
             sidebarContent.append(String.format(MODULE_TPL, docBean.getName()));
             List<DocBean> children = docBean.getChildren();
             for (DocBean child : children) {
-                // * [Quick start](quickstart.md) 二级
-                String filename = getFilename(child);
+                // files/quickstart.md
+                String filename = FILE_FOLDER_NAME + File.separator + getFilename(child);
                 sidebarContent.append(String.format(FILE_TPL, child.getName(), filename));
             }
         }
-        String siderbarFilePath = releaseContext.getDestPath() + File.separator +  SIDEBAR_FILENAME;
+        String siderbarFilePath = docsPath + File.separator +  SIDEBAR_FILENAME;
         FileUtils.write(new File(siderbarFilePath), sidebarContent.toString(), Consts.UTF8);
     }
 
-    protected void createDocFile(DocBean docBean, String destPath) throws IOException {
-        // /User/aa/docmanager-dest/files/hello.md
-        String filename = formatFileName(docBean.getName());
-        String filepath = destPath + File.separator + "docs" + File.separator + getFilename(docBean);
+    protected void createDocFile(DocBean docBean, String docFolderPath) throws IOException {
+        // docFolderPath/files/hello.md
+        String filepath = docFolderPath + File.separator + getFilename(docBean);
         String fileContent = docBean.getContent();
         FileUtils.write(new File(filepath), fileContent, Consts.UTF8);
     }

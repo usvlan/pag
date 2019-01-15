@@ -34,6 +34,8 @@
     
 - 转到码云，开通Pages服务，选择分支，部署目录填`pagesmanager-dest/docs`
 
+后续只需编辑文档，然后点击发布即可。
+
 **注意**：Pages部署目录一定要填`pagesmanager-dest/docs`不然无法查看文档。
 
 ## 问题交流：
