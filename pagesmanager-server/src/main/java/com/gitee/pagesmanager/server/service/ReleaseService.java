@@ -45,7 +45,6 @@ public class ReleaseService {
     public void release(Project project) {
         ReleaseContext releaseContext = this.buildReleaseContext(project);
         try {
-            this.copyDocTemplate(releaseContext);
             this.createDocContent(releaseContext);
             this.runCmd(releaseContext);
         } catch (Exception e) {
@@ -56,25 +55,32 @@ public class ReleaseService {
     
     private ReleaseContext buildReleaseContext(Project project) {
         ReleaseContext releaseContext = new ReleaseContext();
-        String destPath = project.getLocalGitPath() + File.separator + DEST_FOLDER;
+        String destPath = buildDestPath(project);
         MyBeanUtil.copyProperties(project, releaseContext);
         releaseContext.setDestPath(destPath);
         return releaseContext;
     }
 
-    /**
-     * 拷贝模板
-     * @param releaseContext
-     */
-    private void copyDocTemplate(ReleaseContext releaseContext) throws IOException {
-        String destPath = releaseContext.getDestPath();
-        // 先删除老的模板
-        FileUtils.deleteQuietly(new File(destPath));
-        ClassPathResource destRes = new ClassPathResource(DEST_FOLDER);
-        FileUtils.copyDirectory(destRes.getFile(), new File(destPath));
+    public static String buildDestPath(Project project) {
+        return project.getLocalGitPath() + File.separator + DEST_FOLDER;
     }
 
-    public void copyScriptFileToWorkspace(String localGitPath) throws IOException {
+    /**
+     * 拷贝模板
+     * @param project
+     */
+    public void copyDocTemplate(Project project) throws IOException {
+        String destPath = buildDestPath(project);
+        // 先删除老的模板
+        File destDir = new File(destPath);
+        if(!destDir.exists()) {
+            ClassPathResource destRes = new ClassPathResource(DEST_FOLDER);
+            FileUtils.copyDirectory(destRes.getFile(), new File(destPath));
+        }
+        this.copyScriptFileToWorkspace(project.getLocalGitPath());
+    }
+
+    private void copyScriptFileToWorkspace(String localGitPath) throws IOException {
         // 拷贝脚本文件到项目根目录
         ClassPathResource scriptRes = new ClassPathResource(SCRIPT_SH);
         // /Users/xxx/projecta/push.sh

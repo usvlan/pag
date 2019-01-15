@@ -22,6 +22,7 @@ import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.sqlite.date.DateFormatUtils;
 
 import javax.validation.constraints.Min;
@@ -60,13 +61,21 @@ public class ProjectApi {
         }
         Project project = new Project();
         MyBeanUtil.copyPropertiesIgnoreNull(param, project);
+        String localGitPath = formatUrl(project.getLocalGitPath());
+        project.setLocalGitPath(localGitPath);
         projectMapper.save(project);
 
         try {
-            releaseService.copyScriptFileToWorkspace(project.getLocalGitPath());
+            releaseService.copyDocTemplate(project);
         } catch (IOException e) {
             throw new FrontException("创建项目失败");
         }
+    }
+
+    private static String formatUrl(String url) {
+        url = StringUtils.trimTrailingCharacter(url, '\\');
+        url = StringUtils.trimTrailingCharacter(url, '/');
+        return url;
     }
 
     /**
@@ -78,8 +87,7 @@ public class ProjectApi {
     @ApiDocMethod(description = "获取所有项目")
     public List<Project> listAll() {
         Query query = new Query()
-                .orderby("id", Sort.DESC)
-                .setQueryAll(true);
+                .orderby("id", Sort.DESC);
         return projectMapper.list(query);
     }
 
