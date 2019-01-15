@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,28 +77,40 @@ public class DocCreateService {
             // * Getting started 一级
             sidebarContent.append(String.format(MODULE_TPL, docBean.getName()));
             List<DocBean> children = docBean.getChildren();
-            for (DocBean item : children) {
+            for (DocBean child : children) {
                 // * [Quick start](quickstart.md) 二级
-                String filename = String.format(FILE_NAME_TPL, item.getName());
-                sidebarContent.append(String.format(FILE_TPL, item.getName(), filename));
+                String filename = getFilename(child);
+                sidebarContent.append(String.format(FILE_TPL, child.getName(), filename));
             }
         }
         String siderbarFilePath = releaseContext.getDestPath() + File.separator +  SIDEBAR_FILENAME;
         FileUtils.write(new File(siderbarFilePath), sidebarContent.toString(), Consts.UTF8);
     }
 
-    protected void createDocFile(DocBean item, String destPath) throws IOException {
+    protected void createDocFile(DocBean docBean, String destPath) throws IOException {
         // /User/aa/docmanager-dest/files/hello.md
-        String filepath = destPath + File.separator + "docs" + File.separator + String.format(FILE_NAME_TPL, item.getName());
-        String fileContent = item.getContent();
+        String filename = formatFileName(docBean.getName());
+        String filepath = destPath + File.separator + "docs" + File.separator + getFilename(docBean);
+        String fileContent = docBean.getContent();
         FileUtils.write(new File(filepath), fileContent, Consts.UTF8);
+    }
+
+    private static String getFilename(DocBean docBean) {
+        String filename = String.format(FILE_NAME_TPL, docBean.getName());
+        return formatFileName(filename);
+    }
+
+    private static String formatFileName(String name) {
+        name = StringUtils.trimWhitespace(name);
+        name = name.replaceAll("\\s+", "\\-");
+        return name;
     }
 
     private List<DocBean> listAllDoc(int projectId) {
         Query query = new Query();
         query.eq("project_id", projectId)
                 .eq("is_show", 1)
-                .orderby("order_index", Sort.DESC).orderby("id", Sort.ASC);
+                .orderby("order_index", Sort.ASC).orderby("id", Sort.ASC);
 
         List<Doc> docList = docMapper.list(query);
         List<DocBean> ret = new ArrayList<>(docList.size());

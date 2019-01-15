@@ -9,11 +9,7 @@ import com.gitee.fastmybatis.core.query.Sort;
 import com.gitee.fastmybatis.core.support.PageEasyui;
 import com.gitee.fastmybatis.core.util.MapperUtil;
 import com.gitee.fastmybatis.core.util.MyBeanUtil;
-import com.gitee.pagesmanager.server.api.param.DocCreateParam;
-import com.gitee.pagesmanager.server.api.param.DocSearchParam;
-import com.gitee.pagesmanager.server.api.param.DocUpdateParam;
-import com.gitee.pagesmanager.server.api.param.FolderCreateParam;
-import com.gitee.pagesmanager.server.api.param.IdParam;
+import com.gitee.pagesmanager.server.api.param.*;
 import com.gitee.pagesmanager.server.api.result.DocDetailVO;
 import com.gitee.pagesmanager.server.api.result.DocVO;
 import com.gitee.pagesmanager.server.entity.Doc;
@@ -126,11 +122,12 @@ public class DocApi {
         docContentMapper.update(content);
     }
 
+
     @Api(name = "doc.treegrid.page")
     @ApiDocMethod(description = "查询文档")
     public PageEasyui<DocVO> pageDoc(DocSearchParam param) {
         Query query = param.toQuery();
-        query.orderby("order_index", Sort.DESC).orderby("id", Sort.ASC);
+        query.orderby("order_index", Sort.ASC).orderby("id", Sort.ASC);
         PageEasyui<DocVO> pageInfo = MapperUtil.queryForEasyuiDatagrid(docMapper, query, DocVO.class);
         return pageInfo;
     }

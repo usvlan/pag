@@ -87,7 +87,7 @@ public class ProjectApi {
     @ApiDocMethod(description = "获取所有项目")
     public List<Project> listAll() {
         Query query = new Query()
-                .orderby("id", Sort.DESC);
+                .orderby("id", Sort.ASC);
         return projectMapper.list(query);
     }
 
