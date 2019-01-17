@@ -112,14 +112,19 @@ public class DocApi {
     public void update(DocUpdateParam param) {
         Doc doc = docMapper.getById(param.getId());
         Assert.notNull(doc, "doc不能为null");
+        MyBeanUtil.copyProperties(param, doc);
+        docMapper.update(doc);
 
         DocContent content = docContentMapper.getByColumn("doc_id", doc.getId());
-
-        MyBeanUtil.copyProperties(param, doc);
-        content.setContent(param.getContent());
-
-        docMapper.update(doc);
-        docContentMapper.update(content);
+        if (content != null) {
+            content.setContent(param.getContent());
+            docContentMapper.update(content);
+        } else {
+            DocContent contentSave = new DocContent();
+            contentSave.setContent(param.getContent());
+            contentSave.setDocId(doc.getId());
+            docContentMapper.save(contentSave);
+        }
     }
 
 

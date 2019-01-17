@@ -17,8 +17,7 @@ public class DocUpdateParam {
     // 文档名称
     private String name;
 
-    @NotBlank(message = "资源内容不能空")
-    @ApiDocField(description = "资源内容", required = true)
+    @ApiDocField(description = "资源内容")
     private String content;
     
     @NotNull(message = "parentId不能空")

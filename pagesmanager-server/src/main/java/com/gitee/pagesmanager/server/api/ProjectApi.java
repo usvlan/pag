@@ -14,7 +14,6 @@ import com.gitee.pagesmanager.server.api.param.IdParam;
 import com.gitee.pagesmanager.server.api.param.ProjectAddParam;
 import com.gitee.pagesmanager.server.api.param.PropertyGridParam;
 import com.gitee.pagesmanager.server.api.result.PropertygridRow;
-import com.gitee.pagesmanager.server.common.FrontException;
 import com.gitee.pagesmanager.server.entity.Project;
 import com.gitee.pagesmanager.server.mapper.ProjectMapper;
 import com.gitee.pagesmanager.server.service.ReleaseService;
@@ -26,7 +25,6 @@ import org.springframework.util.StringUtils;
 import org.sqlite.date.DateFormatUtils;
 
 import javax.validation.constraints.Min;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,12 +62,6 @@ public class ProjectApi {
         String localGitPath = formatUrl(project.getLocalGitPath());
         project.setLocalGitPath(localGitPath);
         projectMapper.save(project);
-
-        try {
-            releaseService.copyDocTemplate(project);
-        } catch (IOException e) {
-            throw new FrontException("创建项目失败");
-        }
     }
 
     private static String formatUrl(String url) {

@@ -8,7 +8,6 @@ import com.gitee.pagesmanager.server.common.DocBean;
 import com.gitee.pagesmanager.server.common.ReleaseContext;
 import com.gitee.pagesmanager.server.entity.Doc;
 import com.gitee.pagesmanager.server.entity.DocContent;
-import com.gitee.pagesmanager.server.entity.Project;
 import com.gitee.pagesmanager.server.mapper.DocContentMapper;
 import com.gitee.pagesmanager.server.mapper.DocMapper;
 import org.apache.commons.io.FileUtils;
@@ -32,13 +31,14 @@ public class DocCreateService {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
+    private static final String LINE = "\n";
     private static final String SIDEBAR_FILENAME = "_sidebar.md";
 
-    private static final String MODULE_TPL = "\r\n\r\n* %s\r\n\r\n";
+    private static final String MODULE_TPL = LINE + LINE + "* %s" + LINE + LINE;
     // files/hello.md
     private static final String FILE_NAME_TPL = "%s.md";
     //  *[hello](files/hello.md)
-    private static final String FILE_TPL = "  * [%s](%s)\r\n";
+    private static final String FILE_TPL = "  * [%s](%s)" + LINE;
 
     private static final String FILE_FOLDER_NAME = "files";
 
