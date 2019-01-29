@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 public class DocCreateParam {
     @NotBlank(message = "文档名称不能空")
-    @Length(min = 1, max = 20, message = "文档名称长度为1~20")
+    @Length(min = 1, max = 50, message = "文档名称长度为1~50")
     @ApiDocField(description = "文档名称", required = true, example = "文档1")
     private String name;
 
@@ -16,7 +16,6 @@ public class DocCreateParam {
     @ApiDocField(description = "所属项目", required = true, example = "0")
     private Integer projectId;
 
-    @NotBlank(message = "文档内容不能空")
     @ApiDocField(description = "文档内容", required = true, example = "内容。。")
     private String content;
 

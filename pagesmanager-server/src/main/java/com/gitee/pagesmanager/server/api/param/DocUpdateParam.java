@@ -12,7 +12,7 @@ public class DocUpdateParam {
     private Integer id;
 
     @NotBlank(message = "文档名称不能空")
-    @Length(min = 1, max = 20, message = "文档名称长度为1~20")
+    @Length(min = 1, max = 50, message = "文档名称长度为1~50")
     @ApiDocField(description = "文档名称", required = true)
     // 文档名称
     private String name;

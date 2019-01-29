@@ -21,7 +21,9 @@ public class ApiConfigConf {
             public String serialize(Object obj) {
                 return JSON.toJSONString(obj,
                         SerializerFeature.WriteDateUseDateFormat
+                        ,SerializerFeature.WriteMapNullValue
                         ,SerializerFeature.WriteNullListAsEmpty
+                        ,SerializerFeature.WriteNullStringAsEmpty
                 );
             }
         });

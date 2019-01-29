@@ -31,6 +31,8 @@ import org.springframework.util.Assert;
 public class DocApi {
 
     private static final int SHOW = 1;
+    private static final int ROOT_PARENT = 0;
+    private static final int NOT_DEL = 0;
     private static final int BASE_ORDER_INDEX = 100000;
 
     @Autowired
@@ -52,7 +54,8 @@ public class DocApi {
 
         doc.setProjectId(project.getId());
         doc.setIsShow(SHOW);
-        doc.setParentId(0);
+        doc.setParentId(ROOT_PARENT);
+        doc.setIsDeleted(NOT_DEL);
 
         Query query = new Query().eq("parent_id", 0);
         long count = docMapper.getCount(query);
@@ -92,6 +95,7 @@ public class DocApi {
         }
         doc.setParentId(parentId);
         doc.setOrderIndex(orderIndex);
+        doc.setIsDeleted(NOT_DEL);
 
         int i = docMapper.save(doc);
 
@@ -139,6 +143,7 @@ public class DocApi {
     }
 
     @Api(name = "doc.detail.get")
+    @ApiDocMethod(description = "文档详情")
     public DocDetailVO getRes(IdParam param) {
 
         DocDetailVO vo = new DocDetailVO();
@@ -163,5 +168,10 @@ public class DocApi {
         return vo;
     }
 
+    @Api(name = "doc.delete")
+    @ApiDocMethod(description = "删除文档")
+    void delDoc(IdParam param) {
+        docMapper.deleteById(param.getId());
+    }
 
 }

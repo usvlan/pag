@@ -1,5 +1,7 @@
 package com.gitee.pagesmanager.server.entity;
 
+import com.gitee.fastmybatis.core.annotation.LogicDelete;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +35,10 @@ public class Doc {
 
     /**  数据库字段：is_show */
     private Integer isShow;
+
+    /**  数据库字段：is_deleted */
+    @LogicDelete
+    private Integer isDeleted;
 
     /**  数据库字段：gmt_create */
     private Date gmtCreate;
@@ -100,6 +106,18 @@ public class Doc {
         return this.isShow;
     }
 
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public void setGmtUpdate(Date gmtUpdate) {
+        this.gmtUpdate = gmtUpdate;
+    }
+
     /**  数据库字段：doc.gmt_create */
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
@@ -108,11 +126,6 @@ public class Doc {
     /**  数据库字段：doc.gmt_create */
     public Date getGmtCreate() {
         return this.gmtCreate;
-    }
-
-    /**  数据库字段：doc.gm_update */
-    public void setGmUpdate(Date gmtUpdate) {
-        this.gmtUpdate = gmtUpdate;
     }
 
     /**  数据库字段：doc.gm_update */

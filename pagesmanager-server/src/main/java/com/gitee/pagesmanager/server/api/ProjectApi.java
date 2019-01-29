@@ -12,8 +12,10 @@ import com.gitee.fastmybatis.core.support.PageEasyui;
 import com.gitee.fastmybatis.core.util.MyBeanUtil;
 import com.gitee.pagesmanager.server.api.param.IdParam;
 import com.gitee.pagesmanager.server.api.param.ProjectAddParam;
+import com.gitee.pagesmanager.server.api.param.ProjectUpdateParam;
 import com.gitee.pagesmanager.server.api.param.PropertyGridParam;
 import com.gitee.pagesmanager.server.api.result.PropertygridRow;
+import com.gitee.pagesmanager.server.common.FrontException;
 import com.gitee.pagesmanager.server.entity.Project;
 import com.gitee.pagesmanager.server.mapper.ProjectMapper;
 import com.gitee.pagesmanager.server.service.ReleaseService;
@@ -107,6 +109,33 @@ public class ProjectApi {
         pageInfo.setTotal(list.size());
 
         return pageInfo;
+    }
+
+    /**
+     * @return
+     */
+    @Api(name = "project.detail.get")
+    @ApiDocMethod(description = "获取项目详情", results = {
+            @ApiDocField(name = "name", description = "项目名名称"),
+            @ApiDocField(name="gitUrl", description = "git链接"),
+            @ApiDocField(name="localGitPath", description = "本地路径"),
+            @ApiDocField(name="gmtCreate", description = "创建时间"),
+            @ApiDocField(name="gmtUpdate", description = "修改时间"),
+    })
+    public Project detail(IdParam param) {
+        Project project = projectMapper.getById(param.getId());
+        return project;
+    }
+
+    @Api(name = "project.update")
+    @ApiDocMethod(description = "修改项目信息")
+    void udpate(ProjectUpdateParam param) {
+        Project project = projectMapper.getById(param.getId());
+        if (project == null) {
+            throw new FrontException("项目不存在");
+        }
+        MyBeanUtil.copyPropertiesIgnoreNull(param, project);
+        projectMapper.updateIgnoreNull(project);
     }
 
     @Api(name = "project.propertygrid.update")

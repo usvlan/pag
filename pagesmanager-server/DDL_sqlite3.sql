@@ -9,12 +9,13 @@ BEGIN TRANSACTION;
 -- 表：doc
 CREATE TABLE doc (
     id          INTEGER      PRIMARY KEY AUTOINCREMENT,
-    name        VARCHAR (50) NOT NULL,
+    name        VARCHAR (100) NOT NULL,
     content_id  INTEGER      NOT NULL,
     order_index INTEGER      NOT NULL,
     parent_id   INTEGER      NOT NULL,
     project_id  INTEGER      NOT NULL,
     is_show     INTEGER      NOT NULL,
+    is_deleted  INTEGER      NOT NULL DEFAULT(0),
     gmt_create  DATETIME     NOT NULL,
     gm_update   DATETIME     NOT NULL
 );
@@ -33,7 +34,7 @@ CREATE TABLE doc_content (
 -- 表：project
 CREATE TABLE project (
     id         INTEGER      PRIMARY KEY AUTOINCREMENT,
-    name       VARCHAR (50) NOT NULL,
+    name       VARCHAR (100) NOT NULL,
     local_git_path VARCHAR (100),
     git_url        VARCHAR (200),
     git_cmd        VARCHAR (200),
