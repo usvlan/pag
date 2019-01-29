@@ -75,10 +75,13 @@ var DocEditor = (function () {
     }
 
     function initParentFolder(parentId) {
-        ApiUtil.post('doc.detail.get',{id:parentId},function(resp){
-            var docDetail = resp.data;
-            $parentName.textbox('setValue', docDetail.name);
-        });
+        parentId = parseInt(parentId);
+        if (parentId) {
+            ApiUtil.post('doc.detail.get',{id:parentId},function(resp){
+                var docDetail = resp.data;
+                $parentName.textbox('setValue', docDetail.name);
+            });
+        }
     }
 
     return {

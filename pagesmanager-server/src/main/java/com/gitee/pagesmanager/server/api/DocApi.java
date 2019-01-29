@@ -12,6 +12,7 @@ import com.gitee.fastmybatis.core.util.MyBeanUtil;
 import com.gitee.pagesmanager.server.api.param.*;
 import com.gitee.pagesmanager.server.api.result.DocDetailVO;
 import com.gitee.pagesmanager.server.api.result.DocVO;
+import com.gitee.pagesmanager.server.common.FrontException;
 import com.gitee.pagesmanager.server.entity.Doc;
 import com.gitee.pagesmanager.server.entity.DocContent;
 import com.gitee.pagesmanager.server.entity.Project;
@@ -143,6 +144,9 @@ public class DocApi {
         DocDetailVO vo = new DocDetailVO();
 
         Doc doc = docMapper.getById(param.getId());
+        if (doc == null) {
+            throw new FrontException("文档不存在");
+        }
         MyBeanUtil.copyProperties(doc, vo);
 
         DocContent content = docContentMapper.getByColumn("doc_id", doc.getId());
