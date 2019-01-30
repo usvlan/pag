@@ -17,6 +17,9 @@
     </el-form>
   </div>
 </template>
+<style scoped>
+  .project-form {width: 600px;}
+</style>
 <script>
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
