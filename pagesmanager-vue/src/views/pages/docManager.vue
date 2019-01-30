@@ -64,7 +64,7 @@
             </el-tree>
           </el-aside>
           <el-main v-show="docFormVisible" style="padding-top:0">
-            <el-form ref="docForm" :inline="true" :model="docForm" :rules="rules" style="width: 100%">
+            <el-form ref="docForm" :inline="true" :model="docForm" :rules="rules" class="docFormCls" style="width: 100%">
               <el-form-item prop="name">
                 <el-input v-model="docForm.name" class="doc-title" placeholder="文档名称" style="width: 600px;">
                   <template slot="prepend">{{ docForm.parentName }} --></template>
@@ -126,7 +126,7 @@
     </el-tabs>
   </div>
 </template>
-<style scoped>
+<style>
   .custom-tree-node {
     flex: 1;
     display: flex;
@@ -136,7 +136,7 @@
     padding-right: 8px;
   }
   .project-form {width: 600px;padding: 30px;}
-  .el-form-item {margin-bottom: 10px;}
+  .docFormCls .el-form-item {margin-bottom: 10px;}
 </style>
 <script>
 import { mavonEditor } from 'mavon-editor'
