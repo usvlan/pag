@@ -1,5 +1,7 @@
 package com.gitee.pagesmanager.server.entity;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,7 @@ import java.util.Objects;
 /**
  * 表名：template
  */
+@Data
 @Table(name = "template")
 public class Template {
     @Id
@@ -26,40 +29,4 @@ public class Template {
     /**  数据库字段：content */
     private String content;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Template template = (Template) o;
-        return id.equals(template.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

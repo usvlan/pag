@@ -1,40 +1,47 @@
-
--- 表：doc
-CREATE TABLE doc (
-    id          INTEGER      PRIMARY KEY AUTO_INCREMENT,
-    name        VARCHAR (100) NOT NULL,
-    order_index INTEGER      NOT NULL,
-    parent_id   INTEGER      NOT NULL,
-    project_id  INTEGER      NOT NULL,
-    is_show     INTEGER      NOT NULL,
-    gmt_create  DATETIME     NOT NULL,
-    gmt_update   DATETIME     NOT NULL
+DROP TABLE IF EXISTS `doc`;
+CREATE TABLE `doc` (
+  `id` integer AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `order_index` integer NOT NULL,
+  `parent_id` integer NOT NULL,
+  `project_id` integer NOT NULL,
+  `is_show` integer NOT NULL,
+  `is_deleted` integer NOT NULL,
+  `gmt_create` datetime NOT NULL,
+  `gmt_update` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 
--- 表：doc_content
-CREATE TABLE doc_content (
-    id         INTEGER  PRIMARY KEY AUTO_INCREMENT,
-    doc_id     INTEGER  NOT NULL,
-    content    TEXT     NOT NULL,
-    gmt_create DATETIME NOT NULL,
-    gmt_update DATETIME NOT NULL
+DROP TABLE IF EXISTS `doc_content`;
+CREATE TABLE `doc_content` (
+  `id` integer AUTO_INCREMENT,
+  `content` text NOT NULL,
+  `doc_id` integer NOT NULL,
+  `gmt_create` datetime NOT NULL,
+  `gmt_update` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 
--- 表：project
-CREATE TABLE project (
-    id         INTEGER      PRIMARY KEY AUTO_INCREMENT,
-    name       VARCHAR (100) NOT NULL,
-    local_git_path VARCHAR (100),
-    git_url        VARCHAR (200),
-    git_cmd        VARCHAR (200),
-    gmt_create DATETIME     NOT NULL,
-    gmt_update DATETIME     NOT NULL
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `id` integer AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `local_git_path` varchar(100),
+  `git_url` varchar(200),
+  `git_cmd` varchar(200),
+  `gmt_create` datetime NOT NULL,
+  `gmt_update` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
-CREATE TABLE template (
-  id integer PRIMARY KEY AUTO_INCREMENT ,
-  name varchar(100),
-  content text
+
+DROP TABLE IF EXISTS `template`;
+CREATE TABLE `template` (
+  `id` integer NOT NULL AUTO_INCREMENT,
+  `name` varchar(100),
+  `content` MEDIUMTEXT,
+  PRIMARY KEY (`id`)
 );
+

@@ -1,10 +1,12 @@
 package com.gitee.pagesmanager.server.api.param;
 
 import com.gitee.easyopen.doc.annotation.ApiDocField;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 
+@Data
 public class ProjectAddParam {
     @NotBlank(message = "项目名称不能为空")
     @Length(max = 20, message = "项目名长度必须小于等于20")
@@ -27,35 +29,4 @@ public class ProjectAddParam {
     /**  数据库字段：git_cmd */
     private String gitCmd;
 
-    public String getLocalGitPath() {
-        return localGitPath;
-    }
-
-    public void setLocalGitPath(String localGitPath) {
-        this.localGitPath = localGitPath;
-    }
-
-    public String getGitCmd() {
-        return gitCmd;
-    }
-
-    public void setGitCmd(String gitCmd) {
-        this.gitCmd = gitCmd;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGitUrl() {
-        return gitUrl;
-    }
-
-    public void setGitUrl(String gitUrl) {
-        this.gitUrl = gitUrl;
-    }
 }

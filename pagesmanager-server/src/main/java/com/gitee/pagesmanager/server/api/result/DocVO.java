@@ -1,9 +1,10 @@
 package com.gitee.pagesmanager.server.api.result;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 public class DocVO {
     /**  数据库字段：id */
     private Integer id;
@@ -25,79 +26,4 @@ public class DocVO {
 
     private Integer isShow;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getOrderIndex() {
-        return orderIndex;
-    }
-
-    public void setOrderIndex(Integer orderIndex) {
-        this.orderIndex = orderIndex;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    @JSONField(name = "_parentId")
-    public Integer getParentId2() {
-        if (parentId == 0) {
-            return null;
-        }
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Date getGmtUpdate() {
-        return gmtUpdate;
-    }
-
-    public void setGmtUpdate(Date gmtUpdate) {
-        this.gmtUpdate = gmtUpdate;
-    }
-
-    public Integer getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(Integer isShow) {
-        this.isShow = isShow;
-    }
-
-    @Override
-    public String toString() {
-        return "DocVO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", orderIndex=" + orderIndex +
-                ", parentId=" + parentId +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtUpdate=" + gmtUpdate +
-                '}';
-    }
 }

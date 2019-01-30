@@ -7,6 +7,8 @@
 - 框架：spring-boot
 - 数据库：sqlite
 
+![pagesmanager](https://images.gitee.com/uploads/images/2019/0130/161244_13fc59f8_332975.png "pagesmanager.png")
+
 ## 原理
 
 1. 本地维护一组markdown文档
@@ -37,6 +39,11 @@
 后续只需编辑文档，然后点击发布即可。
 
 **注意**：Pages部署目录一定要填`pagesmanager-dest/docs`不然无法查看文档。
+
+## 工程说明
+
+- pagesmanager-server：服务端
+- pagesmanager-vue：前端vue界面
 
 ## 问题交流
 

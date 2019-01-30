@@ -1,11 +1,13 @@
 package com.gitee.pagesmanager.server.api.param;
 
 import com.gitee.easyopen.doc.annotation.ApiDocField;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Data
 public class DocUpdateParam {
     @NotNull(message = "id不能空")
     @ApiDocField(description = "文档id", required = true)
@@ -27,43 +29,4 @@ public class DocUpdateParam {
     @ApiDocField(description = "是否显示")
     private Integer isShow = 1;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
-    public Integer getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(Integer isShow) {
-        this.isShow = isShow;
-    }
 }

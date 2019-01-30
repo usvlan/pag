@@ -1,6 +1,7 @@
 package com.gitee.pagesmanager.server.api.param;
 
 import com.gitee.easyopen.doc.annotation.ApiDocField;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * @author tanghc
  */
+@Data
 public class ProjectUpdateParam {
     @ApiDocField(description = "项目ID", required = true)
     @NotNull(message = "项目ID不能为空")
@@ -30,44 +32,4 @@ public class ProjectUpdateParam {
     @ApiDocField(description = "Git链接", required = true)
     @NotBlank(message = "Git链接不能为空")
     private String gitUrl;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLocalGitPath() {
-        return localGitPath;
-    }
-
-    public void setLocalGitPath(String localGitPath) {
-        this.localGitPath = localGitPath;
-    }
-
-    public String getGitCmd() {
-        return gitCmd;
-    }
-
-    public void setGitCmd(String gitCmd) {
-        this.gitCmd = gitCmd;
-    }
-
-    public String getGitUrl() {
-        return gitUrl;
-    }
-
-    public void setGitUrl(String gitUrl) {
-        this.gitUrl = gitUrl;
-    }
 }

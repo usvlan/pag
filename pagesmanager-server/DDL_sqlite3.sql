@@ -10,7 +10,6 @@ BEGIN TRANSACTION;
 CREATE TABLE doc (
     id          INTEGER      PRIMARY KEY AUTOINCREMENT,
     name        VARCHAR (100) NOT NULL,
-    content_id  INTEGER      NOT NULL,
     order_index INTEGER      NOT NULL,
     parent_id   INTEGER      NOT NULL,
     project_id  INTEGER      NOT NULL,
@@ -42,6 +41,11 @@ CREATE TABLE project (
     gmt_update DATETIME     NOT NULL
 );
 
+CREATE TABLE template (
+  id integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+  name varchar(100),
+  content text
+);
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
