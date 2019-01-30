@@ -3,7 +3,7 @@
     <h3>创建项目</h3>
     <el-form ref="projectForm" :model="projectForm" :rules="projectFormRules" label-width="120px" class="project-form">
       <el-form-item label="项目名称" prop="name">
-        <el-input v-model="projectForm.name" placeholder="文档名称" />
+        <el-input v-model="projectForm.name" placeholder="项目名称" />
       </el-form-item>
       <el-form-item label="Git链接" prop="gitUrl">
         <el-input v-model="projectForm.gitUrl" placeholder="如：https://gitee.com/xxx/myproject.git" />
