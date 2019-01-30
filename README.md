@@ -7,6 +7,8 @@
 - 框架：spring-boot
 - 数据库：sqlite
 
+## 效果图
+
 ![pagesmanager](https://images.gitee.com/uploads/images/2019/0130/161244_13fc59f8_332975.png "pagesmanager.png")
 
 ## 原理
