@@ -77,7 +77,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-  mode: 'history', // 后端支持可开
+  // mode: 'history', // 如果是单独部署，可以打开；如果是放入到服务端程序里面，不能开，否则会出现空白页面
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })

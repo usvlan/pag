@@ -56,8 +56,11 @@ module.exports = {
      * for example GitHub pages. If you plan to deploy your site to https://foo.github.io/bar/,
      * then assetsPublicPath should be set to "/bar/".
      * In most cases please use '/' !!!
+     *
+     * 如果要放到springboot的静态资源下，需要配置成'./'，如果是独立部署配置成'/'
      */
-    assetsPublicPath: '/',
+    // assetsPublicPath: './', // 如果要放到springboot的静态资源下，用这个
+    assetsPublicPath: '/', // 如果是独立部署用这个
 
     /**
      * Source Maps
