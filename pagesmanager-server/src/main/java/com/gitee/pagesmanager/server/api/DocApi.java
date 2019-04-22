@@ -137,7 +137,9 @@ public class DocApi {
     @ApiDocMethod(description = "查询文档")
     public PageEasyui<DocVO> pageDoc(DocSearchParam param) {
         Query query = param.toQuery();
-        query.orderby("order_index", Sort.ASC).orderby("id", Sort.ASC);
+        query.orderby("order_index", Sort.ASC)
+                .orderby("id", Sort.ASC)
+                .setQueryAll(true);
         PageEasyui<DocVO> pageInfo = MapperUtil.queryForEasyuiDatagrid(docMapper, query, DocVO.class);
         return pageInfo;
     }
