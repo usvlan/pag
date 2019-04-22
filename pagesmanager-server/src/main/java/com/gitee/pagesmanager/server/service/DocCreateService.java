@@ -94,7 +94,7 @@ public class DocCreateService {
             List<DocBean> children = docBean.getChildren();
             for (DocBean child : children) {
                 // files/quickstart.md
-                String filename = FILE_FOLDER_NAME + File.separator + getFilename(child);
+                String filename = FILE_FOLDER_NAME + File.separator + getFilename(child) + "?q=" + System.currentTimeMillis();
                 sidebarContent.append(String.format(FILE_TPL, child.getName(), filename));
             }
         }
