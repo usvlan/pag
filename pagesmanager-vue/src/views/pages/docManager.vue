@@ -376,8 +376,9 @@ export default {
     },
     // 删除文档
     delNode: function(data) {
-      this.confirm(`确认要删除[${data.label}]吗？`, function() {
+      this.confirm(`确认要删除[${data.label}]吗？`, function(done) {
         this.post('doc.delete', { id: data.id }, function() {
+          done()
           this.tip('删除成功')
           this.loadTree()
         })
@@ -447,7 +448,7 @@ export default {
     },
     // 发布文档
     releaseDoc() {
-      this.confirm('确认要发布文档吗？', function() {
+      this.confirm('确认要发布文档吗？', function(done) {
         const loading = this.$loading({
           lock: true,
           text: '发布中...',
@@ -456,6 +457,7 @@ export default {
         })
         const param = { projectId: this.params.projectId }
         this.post('project.release', param, function() {
+          done()
           loading.close()
           this.tip('发布成功')
         })
