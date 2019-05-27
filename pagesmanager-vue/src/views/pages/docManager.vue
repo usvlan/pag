@@ -77,9 +77,15 @@
               <el-form-item label="插入模板" style="margin-bottom:0;display: block">
                 <el-button v-for="item in templateList" :key="item.id" type="text" @click="insertApi(item)" >{{ item.name }}</el-button>
               </el-form-item>
-              <mavon-editor v-model="docForm.content" :boxShadow="false" style="min-height: 500px"/>
+              <mavon-editor
+                v-model="docForm.content"
+                :boxShadow="false"
+                style="min-height: 500px"
+                @change="onContentChange"
+                @save="onContentSave"
+              />
               <el-form-item>
-                <el-button type="primary" style="margin-top: 10px;" @click="submitForm('docForm')">保存</el-button>
+                <el-button type="primary" style="margin-top: 10px;" @click="submitForm">保存</el-button>
               </el-form-item>
             </el-form>
           </el-main>
@@ -216,7 +222,9 @@ export default {
       defaultProps: {
         children: 'children',
         label: 'label'
-      }
+      },
+      useOnchange: false,
+      isChanged: false
     }
   },
   watch: {
@@ -285,11 +293,25 @@ export default {
         this.docFormVisible = true
       }
       const docId = data.id
+      if (this.isChanged) {
+        this.confirm('有未保存内容，确定要离开吗？', function(done) {
+          this.doClickNode(docId)
+          done()
+        })
+      } else {
+        this.doClickNode(docId)
+      }
+    },
+    doClickNode: function(docId) {
       this.$refs.docForm.resetFields()
       this.post('doc.detail.get', { id: docId }, function(resp) {
+        this.disableOnChange()
         const docDetail = resp.data
         docDetail.isShow = docDetail.isShow + ''
         Object.assign(this.docForm, docDetail)
+        this.$nextTick(() => {
+          this.enableOnChange()
+        })
       })
     },
     /**
@@ -362,10 +384,11 @@ export default {
       })
     },
     // 修改文档内容
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+    submitForm() {
+      this.$refs['docForm'].validate((valid) => {
         if (valid) {
           this.post('doc.page.update', this.docForm, function(resp) {
+            this.isChanged = false
             this.tip('修改成功')
             this.loadTree()
           })
@@ -390,6 +413,22 @@ export default {
           return false
         }
       })
+    },
+    disableOnChange: function() {
+      this.useOnchange = false
+      this.isChanged = false
+    },
+    enableOnChange: function() {
+      this.useOnchange = true
+      this.isChanged = false
+    },
+    onContentChange: function(val) {
+      if (this.useOnchange) {
+        this.isChanged = true
+      }
+    },
+    onContentSave: function() {
+      this.submitForm()
     },
     // 保存项目信息
     saveProjectInfo(formName) {
