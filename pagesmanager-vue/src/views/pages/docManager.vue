@@ -21,7 +21,8 @@
               plain
               size="mini"
               icon="el-icon-circle-plus-outline"
-              @click.stop="addFolder">
+              @click.stop="addFolder"
+            >
               添加目录
             </el-button>
             <el-tree
@@ -135,6 +136,7 @@
     font-size: 14px;
     padding-right: 8px;
   }
+  .filter-tree {margin-top: 10px;}
   .project-form {width: 600px;padding: 30px;}
   .docFormCls .el-form-item {margin-bottom: 10px;}
 </style>
