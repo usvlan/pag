@@ -59,7 +59,7 @@ export default {
         if (valid) {
           const param = this.projectForm
           this.post('project.create', param, function() {
-            this.$router.push({ path: `/` })
+            window.location.href = '/'
           })
         } else {
           console.log('error submit!!')
