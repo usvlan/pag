@@ -110,7 +110,6 @@ export default {
       this.docFormVisible = false
       this.resetForms()
       this.loadTree()
-      this.initProjectInfo()
     },
     // 加载树
     loadTree: function() {
