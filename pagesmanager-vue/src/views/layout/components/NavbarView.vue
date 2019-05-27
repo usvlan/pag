@@ -8,20 +8,11 @@
     mode="horizontal">
     <!--<hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>-->
     <!--<breadcrumb />-->
-    <el-menu-item index="home" @click="()=>{$router.push('/')}">
+    <el-menu-item index="home" @click="()=>{$router.push('/view')}">
       首页
     </el-menu-item>
     <el-menu-item v-for="(item) in projectList" :key="item.id" :index="item.id.toString()" @click="selectProject(item)">
       {{ item.name }}
-    </el-menu-item>
-    <el-menu-item index="newProject" style="float: right">
-      <el-button
-        type="success"
-        size="medium"
-        icon="el-icon-plus"
-        @click="()=>{ $router.push('/newProject') }">
-        新建项目
-      </el-button>
     </el-menu-item>
   </el-menu>
 </template>
@@ -47,10 +38,11 @@ export default {
       const projects = resp.data
       this.projectList = projects
     })
+    document.title = '接口文档'
   },
   methods: {
     selectProject(item) {
-      this.$router.replace({ path: `/docManager`, query: { id: item.id }})
+      this.$router.replace({ path: 'docView', query: { id: item.id }})
     }
   }
 }

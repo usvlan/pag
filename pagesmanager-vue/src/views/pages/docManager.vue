@@ -13,7 +13,7 @@
         <span slot="label"><i class="el-icon-document"/> 文档管理</span>
         <el-container>
           <el-aside style="min-height: 300px;width: 200px;">
-            <el-input v-model="filterText" placeholder="搜索文档..." style="margin-bottom:20px;" size="mini" clearable>
+            <el-input v-model="filterText" placeholder="搜索文档..." style="margin-bottom:10px;" size="mini" clearable>
               <i slot="prefix" class="el-input__icon el-icon-search"/>
             </el-input>
             <el-button
@@ -219,7 +219,10 @@ export default {
   },
   watch: {
     // 如果路由有变化，会再次执行该方法
-    '$route': 'initData'
+    '$route': 'initData',
+    filterText(val) {
+      this.$refs.tree2.filter(val)
+    }
   },
   created() {
     this.initData()

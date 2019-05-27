@@ -59,8 +59,8 @@ module.exports = {
      *
      * 如果要放到springboot的静态资源下，需要配置成'./'，如果是独立部署配置成'/'
      */
-    // assetsPublicPath: './', // 如果要放到springboot的静态资源下，用这个
-    assetsPublicPath: '/', // 如果是独立部署用这个
+    assetsPublicPath: './', // 如果要放到springboot的静态资源下，用这个
+    // assetsPublicPath: '/', // 如果是独立部署用这个
 
     /**
      * Source Maps

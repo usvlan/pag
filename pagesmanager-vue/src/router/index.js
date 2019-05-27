@@ -8,13 +8,14 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '../views/layout/Layout'
+import LayoutView from '../views/layout/LayoutView'
 
 /**
-* hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
+* hidden: true                   if 'hidden:true' will not show in the sidebar(default is false)
 * alwaysShow: true               if set true, will always show the root menu, whatever its child routes length
 *                                if not set alwaysShow, only more than one route under the children
 *                                it will becomes nested mode, otherwise not show the root menu
-* redirect: noredirect           if `redirect:noredirect` will no redirect in the breadcrumb
+* redirect: noredirect           if 'redirect:noredirect' will no redirect in the breadcrumb
 * name:'router-name'             the name is used by <keep-alive> (must set!!!)
 * meta : {
     title: 'title'               the name show in submenu and breadcrumb (recommend set)
@@ -37,24 +38,24 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: `/doc`,
+    path: '/doc',
     component: Layout,
     name: 'doc',
     children: [
       {
-        path: `/docManager`,
+        path: '/docManager',
         name: 'docManager',
         component: () => import('@/views/pages/docManager')
       }
     ]
   },
   {
-    path: `/addDoc`,
+    path: '/addDoc',
     component: Layout,
     name: 'addDoc',
     children: [
       {
-        path: `/newDoc`,
+        path: '/newDoc',
         name: 'newDoc',
         component: () => import('@/views/pages/newDoc'),
         meta: { title: '添加文档' }
@@ -62,15 +63,40 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: `/addProject`,
+    path: '/addProject',
     component: Layout,
     name: 'addProject',
     children: [
       {
-        path: `/newProject`,
+        path: '/newProject',
         name: 'newProject',
         component: () => import('@/views/pages/newProject'),
         meta: { title: '创建项目' }
+      }
+    ]
+  },
+  // view
+  {
+    path: '/view',
+    component: LayoutView,
+    redirect: '/view',
+    name: 'View',
+    children: [{
+      path: '/view',
+      component: () => import('@/views/dashboard/view'),
+      meta: { title: '首页', icon: 'dashboard' }
+    }]
+  },
+  {
+    path: '/view',
+    component: LayoutView,
+    name: 'ViewHome',
+    children: [
+      {
+        path: '/docView',
+        name: 'DocView',
+        component: () => import('@/views/pages/docView'),
+        meta: { title: '接口文档' }
       }
     ]
   }
