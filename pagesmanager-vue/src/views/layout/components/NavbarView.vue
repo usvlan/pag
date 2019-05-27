@@ -34,7 +34,7 @@ export default {
     if (id) {
       this.defaultActive = id
     }
-    this.post('project.listall', {}, function(resp) {
+    this.post('nologin.project.listall', {}, function(resp) {
       const projects = resp.data
       this.projectList = projects
     })

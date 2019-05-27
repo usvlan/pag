@@ -85,6 +85,11 @@ public class ProjectApi {
         return projectMapper.list(query);
     }
 
+    @Api(name = "nologin.project.listall")
+    public List<Project> listAllNologin() {
+        return this.listAll();
+    }
+
     /**
      * @return
      */

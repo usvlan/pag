@@ -144,6 +144,11 @@ public class DocApi {
         return pageInfo;
     }
 
+    @Api(name = "nologin.doc.treegrid.page")
+    public PageEasyui<DocVO> pageDocNologin(DocSearchParam param) {
+        return this.pageDoc(param);
+    }
+
     @Api(name = "doc.detail.get")
     @ApiDocMethod(description = "文档详情")
     public DocDetailVO getRes(IdParam param) {
@@ -168,6 +173,11 @@ public class DocApi {
         }
 
         return vo;
+    }
+
+    @Api(name = "nologin.doc.detail.get")
+    public DocDetailVO getResNologin(IdParam param) {
+        return this.getRes(param);
     }
 
     @Api(name = "doc.delete")

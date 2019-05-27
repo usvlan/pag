@@ -110,7 +110,6 @@ export default {
       this.docFormVisible = false
       this.resetForms()
       this.loadTree()
-      this.initTemplates()
       this.initProjectInfo()
     },
     // 加载树
@@ -120,17 +119,12 @@ export default {
         this.params.projectId = projectId
         const param = {}
         param.projectId = projectId
-        this.post('doc.treegrid.page', param, function(resp) {
+        this.post('nologin.doc.treegrid.page', param, function(resp) {
           const respData = resp.data
           const treeData = this.convertToTreeData(respData.rows, 0)
           this.data = treeData
         })
       }
-    },
-    initTemplates() {
-      this.post('template.listall', {}, function(resp) {
-        this.templateList = resp.data
-      })
     },
     resetForms() {
       const refs = this.$refs
@@ -155,7 +149,7 @@ export default {
       }
       const docId = data.id
       this.$refs.docForm.resetFields()
-      this.post('doc.detail.get', { id: docId }, function(resp) {
+      this.post('nologin.doc.detail.get', { id: docId }, function(resp) {
         const docDetail = resp.data
         docDetail.isShow = docDetail.isShow + ''
         Object.assign(this.docForm, docDetail)
