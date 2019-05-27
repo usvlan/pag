@@ -5,7 +5,6 @@ import com.gitee.easyopen.annotation.Api;
 import com.gitee.easyopen.annotation.ApiService;
 import com.gitee.easyopen.doc.annotation.ApiDoc;
 import com.gitee.easyopen.doc.annotation.ApiDocMethod;
-import com.gitee.easyopen.session.SessionManager;
 import com.gitee.fastmybatis.core.query.Query;
 import com.gitee.pagesmanager.server.api.param.LoginForm;
 import com.gitee.pagesmanager.server.api.result.AdminUserInfoVO;
@@ -17,7 +16,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author tanghc
@@ -49,11 +49,11 @@ public class SystemApi {
             if (user.getStatus() == STATUS_FORBIDDEN) {
                 throw AdminErrors.USER_FORBIDDEN.getException();
             }
-            SessionManager sessionManager = ApiContext.getSessionManager();
-            // 生成一个新session
-            HttpSession session = sessionManager.getSession(null);
-            WebContext.getInstance().setLoginUser(session, user);
-            return session.getId();
+            Map<String, String> jwtData = new HashMap<>();
+            jwtData.put("id", String.valueOf(user.getId()));
+            jwtData.put("username", username);
+            String jwt = ApiContext.createJwt(jwtData);
+            return jwt;
         }
     }
 

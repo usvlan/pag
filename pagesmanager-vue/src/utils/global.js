@@ -8,7 +8,7 @@ import { getToken, removeToken } from './auth'
 // 创建axios实例
 const client = axios.create({
   baseURL: process.env.BASE_API, // api 的 base_url
-  timeout: 5000 // 请求超时时间
+  timeout: 50000 // 请求超时时间
 })
 
 Object.assign(Vue.prototype, {
@@ -28,9 +28,12 @@ Object.assign(Vue.prototype, {
     if (!uri.startsWith('/')) {
       uri = '/' + uri
     }
+    const jwt = getToken()
+    if (jwt) {
+      client.defaults.headers.common['Authorization'] = 'Bearer ' + getToken()
+    }
     client.post(uri, {
-      data: encodeURIComponent(paramStr),
-      access_token: getToken()
+      data: encodeURIComponent(paramStr)
     }).then(function(response) {
       const resp = response.data
       const code = resp.code

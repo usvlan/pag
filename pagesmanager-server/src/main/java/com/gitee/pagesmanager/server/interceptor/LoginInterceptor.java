@@ -1,12 +1,14 @@
 package com.gitee.pagesmanager.server.interceptor;
 
+import com.auth0.jwt.interfaces.Claim;
+import com.gitee.easyopen.ApiContext;
 import com.gitee.easyopen.ApiMeta;
 import com.gitee.easyopen.interceptor.ApiInterceptorAdapter;
 import com.gitee.pagesmanager.server.common.AdminErrors;
-import com.gitee.pagesmanager.server.common.WebContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * 登录拦截器，验证用户是否登录
@@ -18,7 +20,8 @@ public class LoginInterceptor extends ApiInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object serviceObj, Object argu)
             throws Exception {
-        if (WebContext.getInstance().getLoginUser() != null) {
+        Map<String, Claim> jwtData = ApiContext.getJwtData();
+        if (jwtData != null) {
             return true;
         } else {
             throw AdminErrors.NO_LOGIN.getException();
