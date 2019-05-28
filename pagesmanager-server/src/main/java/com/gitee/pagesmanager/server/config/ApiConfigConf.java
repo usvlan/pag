@@ -3,6 +3,9 @@ package com.gitee.pagesmanager.server.config;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.gitee.easyopen.ApiConfig;
+import com.gitee.easyopen.ApiInvoker;
+import com.gitee.easyopen.ApiParam;
+import com.gitee.easyopen.bean.ApiDefinition;
 import com.gitee.easyopen.interceptor.ApiInterceptor;
 import com.gitee.pagesmanager.server.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +30,16 @@ public class ApiConfigConf {
                 , SerializerFeature.WriteNullListAsEmpty
                 , SerializerFeature.WriteNullStringAsEmpty
         ));
+        apiConfig.setInvoker(new ApiInvoker() {
+            @Override
+            protected ApiDefinition getApiDefinition(ApiParam param) {
+                ApiDefinition apiDefinition = super.getApiDefinition(param);
+                if (param.fatchName().startsWith("nologin.")) {
+                    apiDefinition.setIgnoreJWT(true);
+                }
+                return apiDefinition;
+            }
+        });
         // jwt过期时间，7天
         apiConfig.setJwtExpireIn(3600 * 24 * 7);
         // 登录拦截器
