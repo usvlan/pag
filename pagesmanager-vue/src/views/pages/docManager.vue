@@ -26,7 +26,7 @@
               添加目录
             </el-button>
             <el-tree
-              ref="tree2"
+              ref="tree"
               :data="data"
               :props="defaultProps"
               :filter-node-method="filterNode"
@@ -36,9 +36,8 @@
               node-key="id"
               class="filter-tree"
               default-expand-all
-              @node-click="onNodeClick"
             >
-              <span slot-scope="{ node, data }" class="custom-tree-node">
+              <span slot-scope="{ node, data }" class="custom-tree-node" @click="() => onNodeClick(data)">
                 <span v-if="data.label.length < 15">{{ data.label }}</span>
                 <span v-else>
                   <el-tooltip :content="data.label" class="item" effect="light" placement="right">
@@ -85,7 +84,7 @@
                 @save="onContentSave"
               />
               <el-form-item>
-                <el-button type="primary" style="margin-top: 10px;" @click="submitForm">保存</el-button>
+                <el-button type="primary" style="margin-top: 10px;" @click="submitForm()">保存</el-button>
               </el-form-item>
             </el-form>
           </el-main>
@@ -223,6 +222,7 @@ export default {
         children: 'children',
         label: 'label'
       },
+      currentTreeId: 0,
       useOnchange: false,
       isChanged: false
     }
@@ -231,7 +231,7 @@ export default {
     // 如果路由有变化，会再次执行该方法
     '$route': 'initData',
     filterText(val) {
-      this.$refs.tree2.filter(val)
+      this.$refs.tree.filter(val)
     }
   },
   created() {
@@ -257,6 +257,11 @@ export default {
           const respData = resp.data
           const treeData = this.convertToTreeData(respData.rows, 0)
           this.data = treeData
+          this.$nextTick(() => {
+            if (this.currentTreeId) {
+              this.$refs.tree.setCurrentKey(this.currentTreeId)
+            }
+          })
         })
       }
     },
@@ -285,24 +290,35 @@ export default {
       return data.label.indexOf(value) !== -1
     },
     // 树点击事件
-    onNodeClick(data, node, tree) {
+    onNodeClick(data) {
       if (!data.parentId) {
         return false
+      }
+      const docId = data.id
+      if (docId === this.currentTreeId) {
+        return
       }
       if (!this.docFormVisible) {
         this.docFormVisible = true
       }
-      const docId = data.id
       if (this.isChanged) {
-        this.confirm('有未保存内容，确定要离开吗？', function(done) {
-          this.doClickNode(docId)
-          done()
+        this.$confirm('内容未保存', '提示', {
+          confirmButtonText: '立即保存',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.submitForm(function() {
+            this.doClickNode(docId)
+          })
+        }).catch(() => {
+          this.$refs.tree.setCurrentKey(this.currentTreeId)
         })
       } else {
         this.doClickNode(docId)
       }
     },
     doClickNode: function(docId) {
+      this.currentTreeId = docId
       this.$refs.docForm.resetFields()
       this.post('doc.detail.get', { id: docId }, function(resp) {
         this.disableOnChange()
@@ -385,13 +401,14 @@ export default {
       })
     },
     // 修改文档内容
-    submitForm() {
+    submitForm(callback) {
       this.$refs['docForm'].validate((valid) => {
         if (valid) {
           this.post('doc.page.update', this.docForm, function(resp) {
             this.isChanged = false
             this.tip('修改成功')
             this.loadTree()
+            callback && callback.call(this)
           })
         } else {
           console.log('error submit!!')
