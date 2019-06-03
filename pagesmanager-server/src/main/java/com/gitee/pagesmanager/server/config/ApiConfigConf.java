@@ -7,9 +7,7 @@ import com.gitee.easyopen.ApiInvoker;
 import com.gitee.easyopen.ApiParam;
 import com.gitee.easyopen.bean.ApiDefinition;
 import com.gitee.easyopen.interceptor.ApiInterceptor;
-import com.gitee.easyopen.jwt.impl.JwtServiceImpl;
 import com.gitee.pagesmanager.server.interceptor.LoginInterceptor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,9 +16,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class ApiConfigConf {
-
-    @Value("${admin.access-token.timeout-minutes}")
-    private String accessTokenTimeout;
 
     @Bean
     public ApiConfig apiConfig() {
@@ -41,9 +36,6 @@ public class ApiConfigConf {
                 return apiDefinition;
             }
         });
-        // jwt过期时间，7天
-        apiConfig.setJwtExpireIn(3600 * 24 * 7);
-        apiConfig.setJwtService(new JwtServiceImpl(apiConfig));
         // 登录拦截器
         apiConfig.setInterceptors(new ApiInterceptor[]{new LoginInterceptor()});
         return apiConfig;
