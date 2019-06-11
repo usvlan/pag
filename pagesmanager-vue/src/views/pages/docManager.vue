@@ -93,11 +93,11 @@
           <el-dialog
             :visible.sync="dialogVisible"
             title="添加目录"
-            width="30%"
+            width="35%"
             @close="closeAddFolderDlg">
             <el-form ref="addFolderForm" :inline="true" :model="addFolderForm" :rules="addFolderFormRules" class="demo-form-inline">
               <el-form-item label="目录名称" prop="name">
-                <el-input v-model="addFolderForm.name" placeholder="目录名称" />
+                <el-input v-model="addFolderForm.name" placeholder="目录名称" style="width: 300px;" />
               </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
