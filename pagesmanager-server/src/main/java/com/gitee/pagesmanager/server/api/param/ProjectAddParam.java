@@ -14,13 +14,11 @@ public class ProjectAddParam {
     // 项目名称
     private String name;
 
-    @NotBlank(message = "本地Git项目路径不能为空")
     @Length(max = 200, message = "本地Git项目路径长度必须小于等于200")
     @ApiDocField(description = "本地Git项目路径", required = true, example = "D:/project/myproject/")
     /**  数据库字段：local_git_path */
     private String localGitPath;
 
-    @NotBlank(message = "GitUrl不能为空")
     @Length(max = 200, message = "GitUrl长度必须小于等于200")
     @ApiDocField(description = "GitUrl", required = true, example = "http://www.xxx/aaa.git")
     private String gitUrl;

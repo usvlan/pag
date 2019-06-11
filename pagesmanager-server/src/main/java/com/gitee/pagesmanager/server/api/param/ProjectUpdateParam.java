@@ -2,6 +2,7 @@ package com.gitee.pagesmanager.server.api.param;
 
 import com.gitee.easyopen.doc.annotation.ApiDocField;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,14 +23,14 @@ public class ProjectUpdateParam {
 
     /**  数据库字段：local_git_path */
     @ApiDocField(description = "本地存放路径", required = true)
-    @NotBlank(message = "本地存放路径不能为空")
+    @Length(max = 200, message = "localGitPath长度必须小于等于200")
     private String localGitPath;
-
-    /**  数据库字段：git_cmd */
-    private String gitCmd;
 
     /**  数据库字段：git_url */
     @ApiDocField(description = "Git链接", required = true)
-    @NotBlank(message = "Git链接不能为空")
+    @Length(max = 200, message = "gitUrl长度必须小于等于200")
     private String gitUrl;
+
+    /**  数据库字段：git_cmd */
+    private String gitCmd;
 }

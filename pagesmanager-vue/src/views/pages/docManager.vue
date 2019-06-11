@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <el-button
+      v-if="isShowReleaseBtn"
       type="primary"
       size="small"
       style="margin-bottom: 10px;"
@@ -179,11 +180,9 @@ export default {
           { min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur' }
         ],
         gitUrl: [
-          { required: true, message: '请输入Git链接', trigger: 'blur' },
           { min: 1, max: 200, message: '长度在 1 到 200 个字符', trigger: 'blur' }
         ],
         localGitPath: [
-          { required: true, message: '请输入本地存放路径', trigger: 'blur' },
           { min: 1, max: 200, message: '长度在 1 到 200 个字符', trigger: 'blur' }
         ]
       },
@@ -224,7 +223,8 @@ export default {
       },
       currentTreeId: 0,
       useOnchange: false,
-      isChanged: false
+      isChanged: false,
+      isShowReleaseBtn: false
     }
   },
   watch: {
@@ -274,6 +274,7 @@ export default {
       this.post('project.detail.get', { id: this.params.projectId }, function(resp) {
         const projectInfo = resp.data
         Object.assign(this.projectForm, projectInfo)
+        this.isShowReleaseBtn = this.showReleaseBtn()
       })
     },
     resetForms() {
@@ -416,6 +417,9 @@ export default {
         }
       })
     },
+    showReleaseBtn: function() {
+      return this.projectForm.gitUrl && this.projectForm.localGitPath
+    },
     // 提交新增目录
     submitFolderForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -456,6 +460,7 @@ export default {
           param.id = this.params.projectId
           this.post('project.update', param, function() {
             this.tip('修改成功')
+            this.initProjectInfo()
           })
         } else {
           console.log('error submit!!')
