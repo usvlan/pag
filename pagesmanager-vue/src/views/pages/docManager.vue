@@ -95,7 +95,7 @@
             title="添加目录"
             width="35%"
             @close="closeAddFolderDlg">
-            <el-form ref="addFolderForm" :inline="true" :model="addFolderForm" :rules="addFolderFormRules" class="demo-form-inline">
+            <el-form ref="addFolderForm" :inline="true" :model="addFolderForm" :rules="addFolderFormRules" label-width="120px" class="demo-form-inline">
               <el-form-item label="目录名称" prop="name">
                 <el-input v-model="addFolderForm.name" placeholder="目录名称" style="width: 300px;" />
               </el-form-item>
