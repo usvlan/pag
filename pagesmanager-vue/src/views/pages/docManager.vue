@@ -14,9 +14,6 @@
         <span slot="label"><i class="el-icon-document"/> 文档管理</span>
         <el-container>
           <el-aside style="min-height: 300px;width: 200px;">
-            <el-input v-model="filterText" placeholder="搜索文档..." style="margin-bottom:10px;" size="mini" clearable>
-              <i slot="prefix" class="el-input__icon el-icon-search"/>
-            </el-input>
             <el-button
               type="primary"
               plain
@@ -26,6 +23,14 @@
             >
               添加目录
             </el-button>
+            <el-input
+              v-model="filterText"
+              prefix-icon="el-icon-search"
+              placeholder="搜索文档..."
+              style="margin-bottom:10px;margin-top:10px;"
+              size="mini"
+              clearable
+            />
             <el-tree
               ref="tree"
               :data="data"
@@ -95,7 +100,7 @@
             title="添加目录"
             width="35%"
             @close="closeAddFolderDlg">
-            <el-form ref="addFolderForm" :inline="true" :model="addFolderForm" :rules="addFolderFormRules" label-width="120px" class="demo-form-inline">
+            <el-form ref="addFolderForm" :model="addFolderForm" :rules="addFolderFormRules" label-width="120px">
               <el-form-item label="目录名称" prop="name">
                 <el-input v-model="addFolderForm.name" placeholder="目录名称" style="width: 300px;" />
               </el-form-item>
@@ -142,7 +147,6 @@
     font-size: 14px;
     padding-right: 8px;
   }
-  .filter-tree {margin-top: 10px;}
   .project-form {width: 600px;padding: 30px;}
   .docFormCls .el-form-item {margin-bottom: 10px;}
 </style>
