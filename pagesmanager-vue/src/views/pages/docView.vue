@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-container>
-      <el-aside style="min-height: 300px;width: 200px;">
+      <el-aside style="min-height: 300px;width: 250px;">
         <el-input v-model="filterText" placeholder="搜索文档..." style="margin-bottom:10px;" size="mini" clearable>
           <i slot="prefix" class="el-input__icon el-icon-search"/>
         </el-input>
@@ -19,10 +19,10 @@
           @node-click="onNodeClick"
         >
           <span slot-scope="{ node, data }" class="custom-tree-node">
-            <span v-if="data.label.length < 15">{{ data.label }}</span>
+            <span v-if="data.label.length < 9">{{ data.label }}</span>
             <span v-else>
               <el-tooltip :content="data.label" class="item" effect="light" placement="right">
-                <span>{{ data.label.substring(0, 15) + '...' }}</span>
+                <span>{{ data.label.substring(0, 9) + '...' }}</span>
               </el-tooltip>
             </span>
           </span>

@@ -13,7 +13,7 @@
       <el-tab-pane>
         <span slot="label"><i class="el-icon-document"/> 文档管理</span>
         <el-container>
-          <el-aside style="min-height: 300px;width: 200px;">
+          <el-aside style="min-height: 300px;width: 250px;">
             <el-button
               type="primary"
               plain
@@ -40,14 +40,13 @@
               :expand-on-click-node="false"
               empty-text="无数据"
               node-key="id"
-              class="filter-tree"
               default-expand-all
             >
               <span slot-scope="{ node, data }" class="custom-tree-node" @click="() => onNodeClick(data)">
-                <span v-if="data.label.length < 15">{{ data.label }}</span>
+                <span v-if="data.label.length < 9">{{ data.label }}</span>
                 <span v-else>
                   <el-tooltip :content="data.label" class="item" effect="light" placement="right">
-                    <span>{{ data.label.substring(0, 15) + '...' }}</span>
+                    <span>{{ data.label.substring(0, 9) + '...' }}</span>
                   </el-tooltip>
                 </span>
                 <span>
