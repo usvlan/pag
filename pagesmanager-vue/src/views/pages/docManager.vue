@@ -40,7 +40,6 @@
               :expand-on-click-node="false"
               empty-text="无数据"
               node-key="id"
-              default-expand-all
             >
               <span slot-scope="{ node, data }" class="custom-tree-node" @click="() => onNodeClick(data)">
                 <span v-if="data.label.length < 9">{{ data.label }}</span>
@@ -123,6 +122,9 @@
           <el-form-item label="本地存放路径" prop="localGitPath">
             <el-input v-model="projectForm.localGitPath" placeholder="如：D:/IdeaProjects/myproject" />
           </el-form-item>
+          <el-form-item label="菜单默认展开" prop="expandAll">
+            <el-checkbox v-model="projectForm.expandAll" />
+          </el-form-item>
           <el-form-item label="创建时间">
             {{ projectForm.gmtCreate }}
           </el-form-item>
@@ -174,6 +176,7 @@ export default {
         name: '',
         gitUrl: '',
         localGitPath: '',
+        expandAll: true,
         gmtCreate: '',
         gmtUpdate: ''
       },
@@ -238,6 +241,7 @@ export default {
     }
   },
   created() {
+    this.params.projectId = this.params.id
     this.initData()
   },
   methods: {
@@ -245,9 +249,10 @@ export default {
       this.params = this.$route.query
       this.docFormVisible = false
       this.resetForms()
-      this.loadTree()
       this.initTemplates()
-      this.initProjectInfo()
+      this.initProjectInfo(function() {
+        this.loadTree()
+      })
     },
     // 加载树
     loadTree: function() {
@@ -264,6 +269,10 @@ export default {
             if (this.currentTreeId) {
               this.$refs.tree.setCurrentKey(this.currentTreeId)
             }
+            const allNodes = this.$refs.tree.store._getAllNodes()
+            for (let i = 0; i < allNodes.length; i++) {
+              allNodes[i].expanded = this.projectForm.expandAll
+            }
           })
         })
       }
@@ -273,11 +282,13 @@ export default {
         this.templateList = resp.data
       })
     },
-    initProjectInfo() {
-      this.post('project.detail.get', { id: this.params.projectId }, function(resp) {
+    initProjectInfo(callback) {
+      this.post('project.detail.get', { id: this.params.id }, function(resp) {
         const projectInfo = resp.data
         Object.assign(this.projectForm, projectInfo)
+        this.projectForm.expandAll = projectInfo.menuExpandall === 1
         this.isShowReleaseBtn = this.showReleaseBtn()
+        callback && callback.call(this)
       })
     },
     resetForms() {
@@ -460,7 +471,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const param = this.projectForm
-          param.id = this.params.projectId
+          param.menuExpandall = param.expandAll ? 1 : 0
           this.post('project.update', param, function() {
             this.tip('修改成功')
             this.initProjectInfo()

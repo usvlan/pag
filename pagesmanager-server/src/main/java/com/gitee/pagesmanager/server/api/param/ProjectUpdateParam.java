@@ -33,4 +33,6 @@ public class ProjectUpdateParam {
 
     /**  数据库字段：git_cmd */
     private String gitCmd;
+
+    private Integer menuExpandall;
 }

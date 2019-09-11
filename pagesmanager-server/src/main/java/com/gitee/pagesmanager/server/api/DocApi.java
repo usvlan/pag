@@ -12,6 +12,7 @@ import com.gitee.fastmybatis.core.util.MyBeanUtil;
 import com.gitee.pagesmanager.server.api.param.*;
 import com.gitee.pagesmanager.server.api.result.DocDetailVO;
 import com.gitee.pagesmanager.server.api.result.DocVO;
+import com.gitee.pagesmanager.server.api.result.PageTreeGrid;
 import com.gitee.pagesmanager.server.common.FrontException;
 import com.gitee.pagesmanager.server.entity.Doc;
 import com.gitee.pagesmanager.server.entity.DocContent;
@@ -19,9 +20,13 @@ import com.gitee.pagesmanager.server.entity.Project;
 import com.gitee.pagesmanager.server.mapper.DocContentMapper;
 import com.gitee.pagesmanager.server.mapper.DocMapper;
 import com.gitee.pagesmanager.server.mapper.ProjectMapper;
+import org.apache.commons.lang.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author tanghc
@@ -145,8 +150,15 @@ public class DocApi {
     }
 
     @Api(name = "nologin.doc.treegrid.page")
-    public PageEasyui<DocVO> pageDocNologin(DocSearchParam param) {
-        return this.pageDoc(param);
+    public PageTreeGrid pageDocNologin(DocSearchParam param) {
+        PageEasyui<DocVO> pageEasyui = this.pageDoc(param);
+        PageTreeGrid pageTreeGrid = new PageTreeGrid();
+        pageTreeGrid.setPageEasyui(pageEasyui);
+        Map<String, Object> map = new HashMap<>(16);
+        Project project = projectMapper.getById(param.getProjectId());
+        map.put("expandAll", BooleanUtils.toBoolean(project.getMenuExpandall()));
+        pageTreeGrid.setProperties(map);
+        return pageTreeGrid;
     }
 
     @Api(name = "doc.detail.get")

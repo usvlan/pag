@@ -42,6 +42,7 @@ CREATE TABLE `project` (
   `local_git_path` varchar(100),
   `git_url` varchar(200),
   `git_cmd` varchar(200),
+  `menu_expandall` int(11) DEFAULT '1',
   `gmt_create` datetime NOT NULL,
   `gmt_update` datetime NOT NULL,
   PRIMARY KEY (`id`)

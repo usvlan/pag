@@ -20,6 +20,7 @@ import com.gitee.pagesmanager.server.entity.Project;
 import com.gitee.pagesmanager.server.mapper.ProjectMapper;
 import com.gitee.pagesmanager.server.service.ReleaseService;
 import com.google.common.collect.Lists;
+import org.apache.commons.lang.BooleanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,6 @@ import java.util.Map;
 @ApiService
 @ApiDoc("项目")
 public class ProjectApi {
-
-    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     ReleaseService releaseService;
@@ -63,6 +62,7 @@ public class ProjectApi {
         MyBeanUtil.copyPropertiesIgnoreNull(param, project);
         String localGitPath = formatUrl(project.getLocalGitPath());
         project.setLocalGitPath(localGitPath);
+        project.setMenuExpandall(BooleanUtils.toInteger(true));
         projectMapper.save(project);
     }
 

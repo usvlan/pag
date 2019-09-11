@@ -46,6 +46,7 @@ CREATE TABLE project (
     local_git_path VARCHAR (100),
     git_url        VARCHAR (200),
     git_cmd        VARCHAR (200),
+    menu_expandall integer DEFAULT(1),
     gmt_create DATETIME     NOT NULL,
     gmt_update DATETIME     NOT NULL
 );

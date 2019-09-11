@@ -6,7 +6,7 @@
           <i slot="prefix" class="el-input__icon el-icon-search"/>
         </el-input>
         <el-tree
-          ref="tree2"
+          ref="treeView"
           :data="data"
           :props="defaultProps"
           :filter-node-method="filterNode"
@@ -15,7 +15,6 @@
           empty-text="无数据"
           node-key="id"
           class="filter-tree"
-          default-expand-all
           @node-click="onNodeClick"
         >
           <span slot-scope="{ node, data }" class="custom-tree-node">
@@ -98,7 +97,7 @@ export default {
     // 如果路由有变化，会再次执行该方法
     '$route': 'initData',
     filterText(val) {
-      this.$refs.tree2.filter(val)
+      this.$refs.treeView.filter(val)
     }
   },
   created() {
@@ -119,9 +118,17 @@ export default {
         const param = {}
         param.projectId = projectId
         this.post('nologin.doc.treegrid.page', param, function(resp) {
-          const respData = resp.data
+          const pageTreeGrid = resp.data
+          const respData = pageTreeGrid.pageEasyui
           const treeData = this.convertToTreeData(respData.rows, 0)
           this.data = treeData
+          const expandAll = pageTreeGrid.properties.expandAll
+          this.$nextTick(() => {
+            const allNodes = this.$refs.treeView.store._getAllNodes()
+            for (let i = 0; i < allNodes.length; i++) {
+              allNodes[i].expanded = expandAll
+            }
+          })
         })
       }
     },

@@ -34,6 +34,9 @@ public class Project {
     /**  数据库字段：git_url */
     private String gitUrl;
 
+    /**  数据库字段：menu_expandall */
+    private Integer menuExpandall;
+
     /**  数据库字段：gmt_create */
     private Date gmtCreate;
 
